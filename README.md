@@ -1,4 +1,15 @@
 
+> Note: "Token Vault" for App Service is in Private Preview, and can be accessed by contacting our team, and completing the onboarding process under NDA. Private Preview features like "Token Vault" are primarily meant to gather feedback, and should not be used in production. Support may be discontinued in the future.
+
+# Let's get started!
+
+1. Send us your Azure Subscription Id, so we can onboard you in the "Token Vault" private preview.
+1. Once enrolled, deploy your first "Token Vault" for App Service by following [instructions on GitHub](https://github.com/joerob-msft/app-service-msi-tokenvault-dotnet).
+    1. Deploy and use the Site on Azure.
+    1. Clone, develop and debug locally, then deploy to Azure.
+1. Send us feedback! Either through our discussion alias or through [issues on GitHub](https://github.com/Azure/azure-tokens/issues).
+1. We are adding more reference material and walkthroughs here on this GitHub page.
+
 # Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

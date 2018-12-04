@@ -3,12 +3,34 @@
 
 # Let's get started!
 
-1. Send us your Azure Subscription Id, so we can onboard you in the "Token Vault" private preview.
-1. Once enrolled, deploy your first "Token Vault" for App Service by following [instructions on GitHub](https://github.com/joerob-msft/app-service-msi-tokenvault-dotnet).
+1. Send us **your Azure Subscription Id**, so we can onboard you in the "Token Vault" private preview.
+1. Once enrolled, **deploy your first "Token Vault"** for App Service by following [instructions on GitHub](https://github.com/joerob-msft/app-service-msi-tokenvault-dotnet).
     1. Deploy and use the Site on Azure.
     1. Clone, develop and debug locally, then deploy to Azure.
-1. Send us feedback! Either through our discussion alias or through [issues on GitHub](https://github.com/Azure/azure-tokens/issues).
+1. **Send us feedback!** Either through our discussion alias or through [issues on GitHub](https://github.com/Azure/azure-tokens/issues).
 1. We are adding more reference material and walkthroughs here on this GitHub page.
+
+# Reference
+
+## Service definitions
+
+[Coming soon]
+
+## Management HTTP APIs - on Azure Resource Manager (ARM)
+
+[Coming soon]
+
+## Runtime HTTP APIs
+
+[Coming soon]
+
+## Runtime Access Policies
+
+[Coming soon]
+
+## Phishing attack example and mitigation
+
+[Coming soon]
 
 # Appendix
 

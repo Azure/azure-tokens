@@ -1,0 +1,153 @@
+#########################################################
+#### Variables
+#########################################################
+
+@subscriptionId = a39747ec-b5c4-45de-82a1-935083247170
+@resourceGroup = nimakkvtest
+@armBaseUrl = https://management.azure.com/subscriptions
+@vaultsPath = {{armBaseUrl}}/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.TokenVault/vaults
+@version = ?api-version=2018-08-01-preview
+@vaultName = testVault
+@serviceName = testService
+@tokenName = testToken
+
+#########################################################
+###### List vaults
+#########################################################
+ 
+GET {{vaultsPath}} 
+    {{version}}
+Authorization: {{$aadToken}}
+
+
+#########################################################
+###### Create or update vault
+#########################################################
+ 
+PUT {{vaultsPath}}/{{vaultName}}
+    {{version}}
+Authorization: {{$aadToken}}
+Content-Type: application/json; charset=utf-8
+x-ms-request-id: {{$guid}}
+
+{
+    "location": "westcentralus",
+    "properties": {
+        "authorizedPostRedirectUrls": [
+            "http://example.com/tokens/postlogin"
+        ]        
+    }
+}
+
+#########################################################
+###### Read vault
+#########################################################
+ 
+GET {{vaultsPath}}/{{vaultName}}
+    {{version}}
+Authorization: {{$aadToken}}
+
+
+#########################################################
+###### Delete vault
+#########################################################
+ 
+DELETE {{vaultsPath}}/{{vaultName}}
+    {{version}}
+Authorization: {{$aadToken}}
+
+#########################################################
+###### List services
+#########################################################
+ 
+GET {{vaultsPath}}/{{vaultName}}/services 
+    {{version}}
+Authorization: {{$aadToken}}
+
+
+#########################################################
+###### Create or update service
+#########################################################
+ 
+PUT {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
+    {{version}}
+Authorization: {{$aadToken}}
+Content-Type: application/json; charset=utf-8
+x-ms-request-id: {{$guid}}
+
+{
+  "properties": {
+    "authentication": {
+      "managedIdentityProvider": {
+        "name": "dropbox"
+      },
+      "parameters": {
+        "clientid": "",
+        "clientsecret": ""
+      }
+    },
+    "displayName": "{{serviceName}}"
+  }
+}
+
+#########################################################
+###### Read service
+#########################################################
+ 
+GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
+    {{version}}
+Authorization: {{$aadToken}}
+
+
+# #########################################################
+# ###### Delete service
+# #########################################################
+ 
+# DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
+#     {{version}}
+# Authorization: {{$aadToken}}
+
+
+#########################################################
+###### List tokens
+#########################################################
+ 
+GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens 
+    {{version}}
+Authorization: {{$aadToken}}
+
+
+#########################################################
+###### Create or update token
+#########################################################
+ 
+PUT {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
+    {{version}}
+Authorization: {{$aadToken}}
+Content-Type: application/json; charset=utf-8
+x-ms-request-id: {{$guid}}
+
+{
+  "name": "{{tokenName}}",
+  "properties": {
+    "displayName": "{{tokenName}}"
+  }
+}
+
+#########################################################
+###### Read token
+#########################################################
+ 
+GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
+    {{version}}
+Authorization: {{$aadToken}}
+
+# #########################################################
+# ###### Delete token
+# #########################################################
+ 
+# DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
+#     {{version}}
+# Authorization: {{$aadToken}}
+
+

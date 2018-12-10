@@ -2,8 +2,8 @@
 #### Variables
 #########################################################
 
-@subscriptionId = [subscription-id]
-@resourceGroup = [resource-group-name]
+@subscriptionId = [your-subscription-id]
+@resourceGroup = [your-resource-group-name]
 @armBaseUrl = https://management.azure.com/subscriptions
 @vaultsPath = {{armBaseUrl}}/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.TokenVault/vaults
 @version = ?api-version=2018-08-01-preview

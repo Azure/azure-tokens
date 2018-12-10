@@ -1,0 +1,50 @@
+#########################################################
+#### Variables
+#########################################################
+
+@subscriptionId = [your-subscription-id]
+@resourceGroup = [your-resource-group-name]
+@vaultName = testVault
+@serviceName = testService
+@tokenName = testToken
+@runtimeBaseUrl = https://{{vaultName}}.westcentralus.tokenvault.azure.net
+
+## NOTE: REPLACE [your-domain.com] WITH YOUR DOMAIN NAME. For example if your personal user Id is me@mycompany.com,
+## the string [your-domain.com] should be replaced with mycompany.com everywhere in this document
+
+#########################################################
+###### Read token
+#########################################################
+
+GET {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+#########################################################
+###### List tokens
+#########################################################
+
+GET {{runtimeBaseUrl}}/services/{{serviceName}}/tokens
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+
+#########################################################
+###### Get valid access token
+#########################################################
+
+POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+
+# #########################################################
+# ###### List services
+# #########################################################
+
+# GET {{runtimeBaseUrl}}/services
+# Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+#########################################################
+###### Read service
+#########################################################
+
+GET {{runtimeBaseUrl}}/services/{{serviceName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}

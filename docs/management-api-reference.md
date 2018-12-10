@@ -5,7 +5,7 @@
 The management APIs are primarily meant to enable uniform resource management along with other Azure resources, either through REST-based requests or through deployment templates. They are based on Azure Resource Monitor (ARM) and can be used for programmatic resource mangement actions like read, create, update, delete, list etc. The ARM interface also enables joint template deployment of "Token Vault" and other Azure resoruces for deploying full solutions. These APIs are typically avaiable under `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]`.
 
 
-# Calling the APIs `.http` files
+# Calling the APIs with Rest Client extension
 
 ## Pre-requisites
 1. [Visual Studio Code](https://code.visualstudio.com/) installed on your machine
@@ -15,7 +15,7 @@ The management APIs are primarily meant to enable uniform resource management al
 ## Getting started with `.http` files
 1. Using command line to navigate to an empty folder and clone the repo by running the command `git clone https://github.com/Azure/azure-tokens.git`
 1. Run `code azure-tokens` to open the cloned folder in Visual Studio Code.
-1. Open `/docs/management-api-reference/vault.http` in Visual Studio Code to get started.
+1. Open `/docs/management-api-reference.http` in Visual Studio Code to get started.
 1. Update the following variables to reflect you own Azure environment.
     1. **`@subscriptionId`** should be set to the your Azure subscription ID.
     1. **`@resourceGroup`** should be set to the a resource you have contributor access to.
@@ -37,7 +37,7 @@ var azureServiceTokenProvider = new AzureServiceTokenProvider("https://managemen
 string securityToken = await azureServiceTokenProvider.GetAccessTokenAsync(TokenVaultResource);
 ```
 
-# Vault management operations
+# "Token Vault" management operations
 
 ## List vaults
 
@@ -203,7 +203,7 @@ Tokens can be listed by requesting a `GET` operation against `https://management
     "properties": {
       "parameterValues": {},
       "tokenUri": "https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/tokens/testtoken1",
-      "loginUri": "https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/tokens/testtoken1/login?postLoginRedirectUrl=",
+      "loginUri": "https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/tokens/testtoken1/login",
       "value": null,
       "status": {
         "state": "Error",
@@ -237,7 +237,7 @@ A token can be created by requesting a `PUT` operation against `https://manageme
 
 Try this operation out in VS Code under **Create or update service** section of the [.http file](/docs/management-api-reference.http).
 
-## Read service
+## Read token
 
 A token can be read by requesting a `GET` operation against `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]/services/[service-name]/tokens/[token-name]`. The resulting payload will be similar to below. 
 
@@ -249,7 +249,7 @@ A token can be read by requesting a `GET` operation against `https://management.
   "properties": {
      "parameterValues": {},
     "tokenUri": "https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/tokens/testtoken",
-    "loginUri": "https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/tokens/testtoken",
+    "loginUri": "https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/tokens/testtoken/login",
     "value": null,
     "status": {
       "state": "Error",

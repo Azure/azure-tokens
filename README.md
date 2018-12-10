@@ -14,6 +14,13 @@
 1. **Send us feedback!** Either through our discussion alias or through [issues on GitHub](https://github.com/Azure/azure-tokens/issues).
 1. We are adding more reference material and walkthroughs here on this GitHub page.
 
+# Reference
+
+- **[Management API reference](/docs/management-api-reference.md)**
+- **[Runtime API reference](/docs/runtime-api-reference.md)**
+- Service definitions [coming soon]
+- Runtime security access policies [coming soon]
+
 # Programming interfaces
 
 The service consists of two distinct REST-based Application Programming Interfaces (APIs), respectively for management and runtime operations. Both APIs are based on concepts of tokens, services, vaults and access policy as resources. Currently there are no client libraries available for the said REST-based APIs, but this is something we are thinking about for the future.

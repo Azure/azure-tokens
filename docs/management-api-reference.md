@@ -61,11 +61,7 @@ Vaults can be listed by requesting a `GET` operation against `https://management
 }
 ```
 
-<<<<<<< HEAD
 Try this operation out in VS Code under **List vaults** section of the [.http file](/docs/management-api-reference.http).
-=======
-Try this operation out in VS Code under **List vaults** section of the[.http file](/docs/management-api-reference.http).
->>>>>>> remotes/origin/master
 
 ## Create or update vault
 
@@ -137,11 +133,7 @@ Services can be listed by requesting a `GET` operation against `https://manageme
 }
 ```
 
-<<<<<<< HEAD
 Try this operation out in VS Code under **List services** section of the [.http file](/docs/management-api-reference.http).
-=======
-Try this operation out in VS Code under **List services** section of the[.http file](/docs/management-api-reference.http).
->>>>>>> remotes/origin/master
 
 ## Create or update service
 
@@ -228,11 +220,7 @@ Tokens can be listed by requesting a `GET` operation against `https://management
 }
 ```
 
-<<<<<<< HEAD
 Try this operation out in VS Code under **List tokens** section of the [.http file](/docs/management-api-reference.http).
-=======
-Try this operation out in VS Code under **List tokens** section of the[.http file](/docs/management-api-reference.http).
->>>>>>> remotes/origin/master
 
 ## Create or update token
 

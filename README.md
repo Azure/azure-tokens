@@ -20,7 +20,7 @@ The service consists of two distinct REST-based Application Programming Interfac
 
 ## Management APIs on ARM
 
-The management APIs are primarily meant to enable uniform resource management along with other Azure resources, either through REST-based requests or through deployment templates. They are based on Azure Resource Monitor (ARM) and can be used for programmatic resource mangement actions like read, create, update, delete, list etc. The ARM interface also enables joint template deployment of "Token Vault" and other Azure resoruces for deploying full solutions. The web address for these APIs are often under `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]`.
+The management APIs are primarily meant to enable uniform resource management along with other Azure resources, either through REST-based requests or through deployment templates. They are based on Azure Resource Monitor (ARM) and can be used for programmatic resource mangement actions like read, create, update, delete, list etc. The ARM interface also enables joint template deployment of "Token Vault" and other Azure resoruces for deploying full solutions. The web address for these APIs are under `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]`.
 
 See [Management API reference](/docs/management-api-reference.md) for more details.
 

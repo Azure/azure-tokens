@@ -4,10 +4,10 @@
 
 @subscriptionId = [your-subscription-id]
 @resourceGroup = [your-resource-group-name]
+@vaultName = [your-token-vault-name]
 @armBaseUrl = https://management.azure.com/subscriptions
 @vaultsPath = {{armBaseUrl}}/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.TokenVault/vaults
 @version = ?api-version=2018-08-01-preview
-@vaultName = testVault
 @serviceName = testService
 @tokenName = testToken
 

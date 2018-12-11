@@ -2,29 +2,29 @@
 #### Variables
 #########################################################
 
-@subscriptionId = [your-subscription-id]
-@resourceGroup = [your-resource-group-name]
-@vaultName = [your-token-vault-name]
+@subscriptionId = a39747ec-b5c4-45de-82a1-935083247170
+@resourceGroup = nimakkvtest
+@vaultName = testVault
 @serviceName = testService
 @tokenName = testToken
 @runtimeBaseUrl = https://{{vaultName}}.westcentralus.tokenvault.azure.net
 
-## NOTE: REPLACE [your-domain.com] WITH YOUR DOMAIN NAME. For example if your personal user Id is me@mycompany.com,
-## the string [your-domain.com] should be replaced with mycompany.com everywhere in this document
+## NOTE: REPLACE microsoft.com WITH YOUR DOMAIN NAME. For example if your personal user Id is me@mycompany.com,
+## the string microsoft.com should be replaced with mycompany.com everywhere in this document
 
 #########################################################
 ###### Read token
 #########################################################
 
 GET {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Authorization: {{$aadToken microsoft.com aud:https://tokenvault.azure.net}}
 
 #########################################################
 ###### List tokens
 #########################################################
 
 GET {{runtimeBaseUrl}}/services/{{serviceName}}/tokens
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Authorization: {{$aadToken microsoft.com aud:https://tokenvault.azure.net}}
 
 
 #########################################################
@@ -32,7 +32,7 @@ Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
 #########################################################
 
 POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Authorization: {{$aadToken microsoft.com aud:https://tokenvault.azure.net}}
 
 
 # #########################################################
@@ -40,11 +40,11 @@ Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
 # #########################################################
 
 # GET {{runtimeBaseUrl}}/services
-# Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+# Authorization: {{$aadToken microsoft.com aud:https://tokenvault.azure.net}}
 
 #########################################################
 ###### Read service
 #########################################################
 
 GET {{runtimeBaseUrl}}/services/{{serviceName}}
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Authorization: {{$aadToken microsoft.com aud:https://tokenvault.azure.net}}

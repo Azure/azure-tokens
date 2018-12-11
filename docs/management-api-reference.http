@@ -2,9 +2,9 @@
 #### Variables
 #########################################################
 
-@subscriptionId = [your-subscription-id]
-@resourceGroup = [your-resource-group-name]
-@vaultName = [your-token-vault-name]
+@subscriptionId = a39747ec-b5c4-45de-82a1-935083247170
+@resourceGroup = nimakkvtest
+@vaultName = testVault
 @armBaseUrl = https://management.azure.com/subscriptions
 @vaultsPath = {{armBaseUrl}}/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.TokenVault/vaults
 @version = ?api-version=2018-08-01-preview

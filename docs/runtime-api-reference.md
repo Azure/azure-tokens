@@ -91,7 +91,7 @@ Tokens can be listed by requesting a `GET` operation against `https://[token-vau
 }
 ```
 
-Try this operation out in VS Code under **List tokens** section of the[.http file](/docs/runtime-api-reference.http).
+Try this operation out in VS Code under **List tokens** section of the [.http file](/docs/runtime-api-reference.http).
 
 ## Get valid access token
 

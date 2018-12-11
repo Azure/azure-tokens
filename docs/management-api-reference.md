@@ -228,11 +228,7 @@ Tokens can be listed by requesting a `GET` operation against `https://management
 }
 ```
 
-<<<<<<< HEAD
-Try this operation out in VS Code under **List tokens** section of the [.http file](/docs/management-api-reference.http).
-=======
 Try this operation out in VS Code under **List tokens** section of the[.http file](/docs/management-api-reference.http).
->>>>>>> remotes/origin/master
 
 ## Create or update token
 

@@ -16,29 +16,30 @@
 
 # Programming interfaces
 
+- **[Management API reference](/docs/management-api-reference.md)**
+- **[Runtime API reference](/docs/runtime-api-reference.md)**
+- Service definitions [coming soon]
+- Runtime security access policies [coming soon]
+
+# Programming interfaces
+
 The service consists of two distinct REST-based Application Programming Interfaces (APIs), respectively for management and runtime operations. Both APIs are based on concepts of tokens, services, vaults and access policy as resources. Currently there are no client libraries available for the said REST-based APIs, but this is something we are thinking about for the future.
 
 ## Management APIs on ARM
 
 The management APIs are primarily meant to enable uniform resource management along with other Azure resources, either through REST-based requests or through deployment templates. They are based on Azure Resource Monitor (ARM) and can be used for programmatic resource mangement actions like read, create, update, delete, list etc. The ARM interface also enables joint template deployment of "Token Vault" and other Azure resoruces for deploying full solutions. The web address for these APIs are under `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]`.
 
-See [Management API reference](/docs/management-api-reference.md) for more details.
+See **[Management API reference](/docs/management-api-reference.md)** for more details.
 
 ## Runtime APIs
 
 The runtime APIs are available through a dedicated web address for each token vault. They support most of the resource management actions, however they also support the all-important token operations like get-valid-token. They are meant for direct programmatic use and are more optimized for performance. The service host is typically `https://[token-vault-name].westcentralus.tokenvault.azure.net`.
 
-See [Runtime API reference](/docs/runtime-api-reference.md) for more details.
+See **[Runtime API reference](/docs/runtime-api-reference.md)** for more details.
 
 ## Resource concepts
 
-### Token
-
-### Service
-
-### Vault
-
-### Access policy
+[Coming soon] Token, Service, Token Vault, Access policy
 
 # Other reference
 

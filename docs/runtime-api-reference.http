@@ -4,7 +4,11 @@
 
 @subscriptionId = [your-subscription-id]
 @resourceGroup = [your-resource-group-name]
+<<<<<<< HEAD
 @vaultName = [your-token-vault-name]
+=======
+@vaultName = testVault
+>>>>>>> remotes/origin/master
 @serviceName = testService
 @tokenName = testToken
 @runtimeBaseUrl = https://{{vaultName}}.westcentralus.tokenvault.azure.net

@@ -4,6 +4,7 @@
 
 @subscriptionId = [your-subscription-id]
 @resourceGroup = [your-resource-group-name]
+<<<<<<< HEAD
 @vaultName = [your-token-vault-name]
 @serviceName = testService
 @tokenName = testToken

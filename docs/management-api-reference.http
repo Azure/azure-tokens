@@ -28,7 +28,6 @@ PUT {{vaultsPath}}/{{vaultName}}
     {{version}}
 Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
-x-ms-request-id: {{$guid}}
 
 {
     "location": "westcentralus",
@@ -73,7 +72,6 @@ PUT {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
     {{version}}
 Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
-x-ms-request-id: {{$guid}}
 
 {
   "properties": {
@@ -116,7 +114,6 @@ GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens
     {{version}}
 Authorization: {{$aadToken}}
 
-
 #########################################################
 ###### Create or update token
 #########################################################
@@ -125,7 +122,6 @@ PUT {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
     {{version}}
 Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
-x-ms-request-id: {{$guid}}
 
 {
   "name": "{{tokenName}}",

@@ -34,7 +34,6 @@ Authorization: {{$aadToken microsoft.com aud:https://tokenvault.azure.net}}
 POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}
 Authorization: {{$aadToken microsoft.com aud:https://tokenvault.azure.net}}
 
-
 # #########################################################
 # ###### List services
 # #########################################################

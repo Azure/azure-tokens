@@ -34,6 +34,16 @@ Authorization: {{$aadToken microsoft.com aud:https://tokenvault.azure.net}}
 POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}
 Authorization: {{$aadToken microsoft.com aud:https://tokenvault.azure.net}}
 
+#########################################################
+###### Save token using redirect code
+#########################################################
+
+POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}/save
+Authorization: {{$aadToken microsoft.com aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{ "code" : "" }
+
 # #########################################################
 # ###### List services
 # #########################################################

@@ -10,6 +10,11 @@
 @version = ?api-version=2018-08-01-preview
 @serviceName = testService
 @tokenName = testToken
+@policyName = testPolicy
+@tenantId = 72f988bf-86f1-41af-91ab-2d7cd011db47
+@objectId = 7baac027-a00e-4419-9e69-5d44aac79c73
+@dropboxClientId = 6uizbvhtexil51s
+@dropboxClientSecret = btk5xjo1y67tedc
 
 #########################################################
 ###### List vaults
@@ -80,8 +85,8 @@ Content-Type: application/json; charset=utf-8
         "name": "dropbox"
       },
       "parameters": {
-        "clientid": "",
-        "clientsecret": ""
+        "clientid": "{{dropboxClientId}}",
+        "clientsecret": "{{dropboxClientSecret}}"
       }
     },
     "displayName": "{{serviceName}}"
@@ -97,13 +102,13 @@ GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
 Authorization: {{$aadToken}}
 
 
-# #########################################################
-# ###### Delete service
-# #########################################################
+#########################################################
+###### Delete service
+#########################################################
  
-# DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
-#     {{version}}
-# Authorization: {{$aadToken}}
+DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
+    {{version}}
+Authorization: {{$aadToken}}
 
 
 #########################################################
@@ -138,12 +143,74 @@ GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
     {{version}}
 Authorization: {{$aadToken}}
 
-# #########################################################
-# ###### Delete token
-# #########################################################
+#########################################################
+###### Delete token
+#########################################################
  
-# DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
-#     {{version}}
-# Authorization: {{$aadToken}}
+DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
+    {{version}}
+Authorization: {{$aadToken}}
 
+#########################################################
+###### List access policies
+#########################################################
 
+GET {{vaultsPath}}/{{vaultName}}/accessPolicies
+    {{version}}
+Authorization: {{$aadToken}}
+
+#########################################################
+###### Get access policy
+#########################################################
+
+GET {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+    {{version}}
+Authorization: {{$aadToken}}
+
+#########################################################
+###### Create or update access policy
+#########################################################
+
+PUT {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+    {{version}}
+Authorization: {{$aadToken}}
+Content-Type: application/json; charset=utf-8
+
+{  
+  "properties": {
+    "name": "{{policyName}}",
+    "principal": {
+      "tenantId": "{{tenantId}}",
+      "objectId": "{{objectId}}"
+    },
+    "permissions": ["Get", "List", "CreateOrUpdate", "Delete"]
+  }
+}
+
+#########################################################
+###### Patch access policy
+#########################################################
+
+PATCH {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+    {{version}}
+Authorization: {{$aadToken}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "properties": {
+        "name" : "{{policyName}}",
+        "principal": {
+            "tenantId": "{{tenantId}}",
+            "objectId": "{{objectId}}"
+        },
+        "permissions": ["Get", "List", "CreateOrUpdate", "Delete"]
+    }
+}
+
+#########################################################
+###### Delete access policy
+#########################################################
+
+DELETE {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+    {{version}}
+Authorization: {{$aadToken}}

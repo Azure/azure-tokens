@@ -51,7 +51,7 @@ Vaults can be listed by requesting a `GET` operation against `https://management
     "type": "Microsoft.TokenVault/vaults",
     "location": "westcentralus",
     "properties": {
-      "redirectUrl": "https://testvault1.westcentralus.tokenvault.azure.net:443/redirect",
+      "redirectUrl": "https://testvault1.westcentralus.tokenvault.azure.net/redirect",
       "vaultUrl": "https://testvault1.westcentralus.tokenvault.azure.net",
       "authorizedPostRedirectUrls": ["http://example.com/tokens/postlogin"]
     },

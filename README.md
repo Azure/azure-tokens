@@ -41,8 +41,6 @@ See **[Runtime API reference](/docs/runtime-api-reference.md)** for more details
 
 [Coming soon] Token, Service, Token Vault, Access policy
 
-# Other references
-
 ## Service definitions
 
 The service will have support for a long list of OAuth-based SaaS services, and will support customization in the future. For private preview however our support is deliberately limited to a list of close to 10 services. Most samples povide instructions on using Dropbox, however here we provide more details about a few of the other common services.

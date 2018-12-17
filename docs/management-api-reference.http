@@ -4,12 +4,17 @@
 
 @subscriptionId = [your-subscription-id]
 @resourceGroup = [your-resource-group-name]
+@vaultName = [your-vault-name]
 @armBaseUrl = https://management.azure.com/subscriptions
 @vaultsPath = {{armBaseUrl}}/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.TokenVault/vaults
 @version = ?api-version=2018-08-01-preview
-@vaultName = testVault
 @serviceName = testService
 @tokenName = testToken
+@policyName = testPolicy
+@tenantId = [your-tenant-id]
+@objectId = [your-object-id]
+@dropboxClientId = [your-dropbox-client-id]
+@dropboxClientSecret = [your-dropbox-client-secret]
 
 #########################################################
 ###### List vaults
@@ -28,7 +33,6 @@ PUT {{vaultsPath}}/{{vaultName}}
     {{version}}
 Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
-x-ms-request-id: {{$guid}}
 
 {
     "location": "westcentralus",
@@ -46,7 +50,6 @@ x-ms-request-id: {{$guid}}
 GET {{vaultsPath}}/{{vaultName}}
     {{version}}
 Authorization: {{$aadToken}}
-
 
 #########################################################
 ###### Delete vault
@@ -73,7 +76,6 @@ PUT {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
     {{version}}
 Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
-x-ms-request-id: {{$guid}}
 
 {
   "properties": {
@@ -82,8 +84,8 @@ x-ms-request-id: {{$guid}}
         "name": "dropbox"
       },
       "parameters": {
-        "clientid": "",
-        "clientsecret": ""
+        "clientid": "{{dropboxClientId}}",
+        "clientsecret": "{{dropboxClientSecret}}"
       }
     },
     "displayName": "{{serviceName}}"
@@ -99,13 +101,13 @@ GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
 Authorization: {{$aadToken}}
 
 
-# #########################################################
-# ###### Delete service
-# #########################################################
+#########################################################
+###### Delete service
+#########################################################
  
-# DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
-#     {{version}}
-# Authorization: {{$aadToken}}
+DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
+    {{version}}
+Authorization: {{$aadToken}}
 
 
 #########################################################
@@ -116,7 +118,6 @@ GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens
     {{version}}
 Authorization: {{$aadToken}}
 
-
 #########################################################
 ###### Create or update token
 #########################################################
@@ -125,7 +126,6 @@ PUT {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
     {{version}}
 Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
-x-ms-request-id: {{$guid}}
 
 {
   "name": "{{tokenName}}",
@@ -142,12 +142,74 @@ GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
     {{version}}
 Authorization: {{$aadToken}}
 
-# #########################################################
-# ###### Delete token
-# #########################################################
+#########################################################
+###### Delete token
+#########################################################
  
-# DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
-#     {{version}}
-# Authorization: {{$aadToken}}
+DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
+    {{version}}
+Authorization: {{$aadToken}}
 
+#########################################################
+###### List access policies
+#########################################################
 
+GET {{vaultsPath}}/{{vaultName}}/accessPolicies
+    {{version}}
+Authorization: {{$aadToken}}
+
+#########################################################
+###### Get access policy
+#########################################################
+
+GET {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+    {{version}}
+Authorization: {{$aadToken}}
+
+#########################################################
+###### Create or update access policy
+#########################################################
+
+PUT {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+    {{version}}
+Authorization: {{$aadToken}}
+Content-Type: application/json; charset=utf-8
+
+{  
+  "properties": {
+    "name": "{{policyName}}",
+    "principal": {
+      "tenantId": "{{tenantId}}",
+      "objectId": "{{objectId}}"
+    },
+    "permissions": ["Get", "List", "CreateOrUpdate", "Delete"]
+  }
+}
+
+#########################################################
+###### Patch access policy
+#########################################################
+
+PATCH {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+    {{version}}
+Authorization: {{$aadToken}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "properties": {
+        "name" : "{{policyName}}",
+        "principal": {
+            "tenantId": "{{tenantId}}",
+            "objectId": "{{objectId}}"
+        },
+        "permissions": ["Get", "List", "CreateOrUpdate", "Delete"]
+    }
+}
+
+#########################################################
+###### Delete access policy
+#########################################################
+
+DELETE {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+    {{version}}
+Authorization: {{$aadToken}}

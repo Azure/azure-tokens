@@ -14,12 +14,12 @@
 1. **Send us feedback!** Either through our discussion alias or through [issues on GitHub](https://github.com/Azure/azure-tokens/issues).
 1. We are adding more reference material and walkthroughs here on this GitHub page.
 
-# Reference
+# References
 
 - **[Management API reference](/docs/management-api-reference.md)**
 - **[Runtime API reference](/docs/runtime-api-reference.md)**
-- Service definitions [coming soon]
-- Runtime security access policies [coming soon]
+- **[Service definition reference](/docs/service-definition-reference.md)**
+- Runtime security through access policies [coming soon]
 
 # Programming interfaces
 
@@ -27,33 +27,40 @@ The service consists of two distinct REST-based Application Programming Interfac
 
 ## Management APIs on ARM
 
-The management APIs are primarily meant to enable uniform resource management along with other Azure resources, either through REST-based requests or through deployment templates. They are based on Azure Resource Monitor (ARM) and can be used for programmatic resource mangement actions like read, create, update, delete, list etc. The ARM interface also enables joint template deployment of "Token Vault" and other Azure resoruces for deploying full solutions. The web address for these APIs are often under `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]`.
+The management APIs are primarily meant to enable uniform resource management along with other Azure resources, either through REST-based requests or through deployment templates. They are based on Azure Resource Management (ARM) and can be used for programmatic resource mangement actions like read, create, update, delete, list etc. The ARM interface also enables joint template deployment of "Token Vault" and other Azure resoruces, in form of full solutions. The web address for these APIs are under `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault`.
 
 See **[Management API reference](/docs/management-api-reference.md)** for more details.
 
 ## Runtime APIs
 
-The runtime APIs are available through a dedicated web address for each token vault. They support most of the resource management actions, however they also support the all-important token operations like get-valid-token. They are meant for direct programmatic use and are more optimized for performance. The service host is typically `https://[token-vault-name].westcentralus.tokenvault.azure.net`.
+The runtime APIs are available through a dedicated web address for each token vault. They support most of the resource management actions, however they also support the all-important token operations like get-valid-token. They are meant for direct programmatic use and are more optimized for performance. The service host is `https://[token-vault-name].westcentralus.tokenvault.azure.net`.
 
 See **[Runtime API reference](/docs/runtime-api-reference.md)** for more details.
 
 ## Resource concepts
 
-[Coming soon] Token, Service, Token Vault, Access policy
+| Resourse name | Parent resource | API availability |
+|---------------|---|--|
+| Vault | Resource group | Management |
+| - Access policy | Vault | Management |
+| - Service | Vault | Management, Runtime |
+| - - Token | Service | Management, Runtime |
 
-# Other reference
+# Managed service definitions
 
-## Service definitions
+We will have support for a long list of OAuth-based SaaS services in the future, and will also support customization. However for private preview, our support is deliberately limited to a list of close to 10 services. Most samples povide instructions on using Dropbox, however here we provide more details about a few of the other common services.
+
+See **[Service definition reference](/docs/service-definition-reference.md)** for more details.
+
+# Runtime security
+
+## Access Policies
 
 [Coming soon]
 
-## Runtime Access Policies
+## Phishing attack vulnerability
 
-[Coming soon]
-
-## Phishing attack example and mitigation
-
-[Coming soon]
+See **[Phishing attack vulnerability](/docs/phishing-attack-vulnerability.md)** for more details.
 
 # Appendix
 

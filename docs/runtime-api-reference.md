@@ -1,6 +1,6 @@
 > Note: "Token Vault" for App Service is in Private Preview, and can be accessed by contacting our team, and completing the onboarding process under NDA. Private Preview features like "Token Vault" are primarily meant to gather feedback, and should not be used in production. Support may be discontinued in the future.
 
-# What are runtime APIs
+# What are runtime APIs?
 
 The runtime APIs are available through a dedicated web address for each token vault. They provide token operations like get-valid-token, in addition to supporting most of the resource management actions. Runtime APIs are meant for direct programmatic access and are better optimized for performance. The service host is typically available at `https://[token-vault-name].westcentralus.tokenvault.azure.net`.
 
@@ -91,7 +91,7 @@ Tokens can be listed by requesting a `GET` operation against `https://[token-vau
 }
 ```
 
-Try this operation out in VS Code under **List tokens** section of the[.http file](/docs/runtime-api-reference.http).
+Try this operation out in VS Code under **List tokens** section of the [.http file](/docs/runtime-api-reference.http).
 
 ## Get valid access token
 
@@ -124,11 +124,11 @@ A token can be created by requesting a `PUT` operation against `https://[token-v
 
 Try this operation out in VS Code under **Create or update service** section of the [.http file](/docs/runtime-api-reference.http).
 
-<!-- ## Delete service
+## Delete service
 
 A token can be read by requesting a `DELETE` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]`with no payload. The result should be `200 OK`.
 
-Try this operation out in VS Code under **Delete token** section of the [.http file](/docs/runtime-api-reference.http). -->
+Try this operation out in VS Code under **Delete token** section of the [.http file](/docs/runtime-api-reference.http).
 
 # [Coming soon]
 

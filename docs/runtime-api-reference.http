@@ -4,7 +4,7 @@
 
 @subscriptionId = [your-subscription-id]
 @resourceGroup = [your-resource-group-name]
-@vaultName = testVault
+@vaultName = [your-vault-name]
 @serviceName = testService
 @tokenName = testToken
 @runtimeBaseUrl = https://{{vaultName}}.westcentralus.tokenvault.azure.net
@@ -34,13 +34,22 @@ Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
 POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}
 Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
 
+#########################################################
+###### Save token using redirect code
+#########################################################
 
-# #########################################################
-# ###### List services
-# #########################################################
+POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}/save
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
 
-# GET {{runtimeBaseUrl}}/services
-# Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+{ "code" : "" }
+
+#########################################################
+###### List services
+#########################################################
+
+GET {{runtimeBaseUrl}}/services
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
 
 #########################################################
 ###### Read service

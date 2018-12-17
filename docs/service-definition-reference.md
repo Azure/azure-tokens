@@ -34,7 +34,8 @@ The service creation payload generally looks like below:
       },
       "parameters": {
         "clientid": "[service-client-id]",
-        "clientsecret": "[service-client-secret]"
+        "clientsecret": "[service-client-secret]",
+        "otherserviceparameter" : "[other-service-parameter]"
       }
     },
     "displayName": "[service-display-name]"
@@ -44,9 +45,9 @@ The service creation payload generally looks like below:
 
 # Our managed service definitions
 
-| Service name   |  Managed service name | Developer site  |   Parameters   | 
-|-----|-------|--------|-------|
-| Dropbox | `dropbox` | https://www.dropbox.com/developers/apps | App key, App secret, Redirect URIs  | 
+| Service name   |  Managed service name | Developer site  |   Parameters   |  Special instructions | 
+|-----|-------|--------|-------|--------|
+| Dropbox | `dropbox` | https://www.dropbox.com/developers/apps | App key, App secret, Redirect URIs  |  [Create a Dropbox service](\service-definition-reference\dropbox.md)
 | Twitter | `twitter` | https://developer.twitter.com/en/apps | API key, API secret key, Callback URL |
 | Facebook | `facebook` | https://developers.facebook.com/apps | App ID, App Secret |
 | Generic OAuth 2.0| `oauth2generic`| Refer to service developer page. | Typically: App key, App secret, Redirect URI |

@@ -14,12 +14,12 @@
 1. **Send us feedback!** Either through our discussion alias or through [issues on GitHub](https://github.com/Azure/azure-tokens/issues).
 1. We are adding more reference material and walkthroughs here on this GitHub page.
 
-# Programming interfaces
+# References
 
 - **[Management API reference](/docs/management-api-reference.md)**
 - **[Runtime API reference](/docs/runtime-api-reference.md)**
 - **[Service definition reference](/docs/service-definition-reference.md)**
-- Runtime security access policies [coming soon]
+- Runtime security through access policies [coming soon]
 
 # Programming interfaces
 
@@ -39,21 +39,28 @@ See **[Runtime API reference](/docs/runtime-api-reference.md)** for more details
 
 ## Resource concepts
 
-[Coming soon] Token, Service, Token Vault, Access policy
+| Resourse name | Parent resource | API availability |
+|---------------|---|--|
+| Vault | Resource group | Management |
+| - Access policy | Vault | Management |
+| - Service | Vault | Management, Runtime |
+| - - Token | Service | Management, Runtime |
 
-## Service definitions
+# Managed service definitions
 
-The service will have support for a long list of OAuth-based SaaS services, and will support customization in the future. For private preview however our support is deliberately limited to a list of close to 10 services. Most samples povide instructions on using Dropbox, however here we provide more details about a few of the other common services.
+We will have support for a long list of OAuth-based SaaS services in the future, and will also support customization. However for private preview, our support is deliberately limited to a list of close to 10 services. Most samples povide instructions on using Dropbox, however here we provide more details about a few of the other common services.
 
 See **[Service definition reference](/docs/service-definition-reference.md)** for more details.
 
-## Runtime Access Policies
+# Runtime security
+
+## Access Policies
 
 [Coming soon]
 
-## Phishing attack example and mitigation
+## Phishing attack vulnerability
 
-[Coming soon]
+See **[Phishing attack vulnerability](/docs/phishing-attack-vulnerability.md)** for more details.
 
 # Appendix
 

@@ -2,19 +2,19 @@
 #### Variables
 #########################################################
 
-@subscriptionId = a39747ec-b5c4-45de-82a1-935083247170
-@resourceGroup = nimakkvtest
-@vaultName = testVault
+@subscriptionId = [your-subscription-id]
+@resourceGroup = [your-resource-group-name]
+@vaultName = [your-vault-name]
 @armBaseUrl = https://management.azure.com/subscriptions
 @vaultsPath = {{armBaseUrl}}/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.TokenVault/vaults
 @version = ?api-version=2018-08-01-preview
 @serviceName = testService
 @tokenName = testToken
 @policyName = testPolicy
-@tenantId = 72f988bf-86f1-41af-91ab-2d7cd011db47
-@objectId = 7baac027-a00e-4419-9e69-5d44aac79c73
-@dropboxClientId = 6uizbvhtexil51s
-@dropboxClientSecret = btk5xjo1y67tedc
+@tenantId = [your-tenant-id]
+@objectId = [your-object-id]
+@dropboxClientId = [your-dropbox-client-id]
+@dropboxClientSecret = [your-dropbox-client-secret]
 
 #########################################################
 ###### List vaults

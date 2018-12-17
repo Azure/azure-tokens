@@ -124,11 +124,11 @@ A token can be created by requesting a `PUT` operation against `https://[token-v
 
 Try this operation out in VS Code under **Create or update service** section of the [.http file](/docs/runtime-api-reference.http).
 
-<!-- ## Delete service
+## Delete service
 
 A token can be read by requesting a `DELETE` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]`with no payload. The result should be `200 OK`.
 
-Try this operation out in VS Code under **Delete token** section of the [.http file](/docs/runtime-api-reference.http). -->
+Try this operation out in VS Code under **Delete token** section of the [.http file](/docs/runtime-api-reference.http).
 
 # [Coming soon]
 

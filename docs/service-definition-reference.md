@@ -2,24 +2,26 @@
 
 # General recipe for creating services
 
-"Token Vault" requires you to create a developer account with the service that you want your users to authenticate with. This way the corresponding service, say Dropbox for example, can notify you of issues with your app or any unusual activities. Also this pattern helps you be in control of your own application registration.
+"Token Vault" requires you to create a developer account with the service that you want your users to authenticate with. This way the corresponding service, say Dropbox for example, can have a direct relationship with you as a developer and can notify you of issues or unusual activity.
 
-In general, these are the required steps to create a service resource:
+In general, the following are the required steps to create a service resource:
 
-## Register your app with the service 
+## Register your app with the service
 
 Register an app with the service you want to call on behalf of your users. This is typically done through the service's developer site:
-1. Go to the service's **Developer site**. For example go to https://www.dropbox.com/developers/apps for Dropbox. 
+
+1. Go to the service's **Developer site**. For example go to the [Dropbox developer site](https://www.dropbox.com/developers/apps).
 1. create an account with the service using your contact information.
 1. Create an app registration, and set the redirect URI to `https://[your-vault-name].westcentralus.tokenvault.azure.net/redirect`.
 1. You may have to authorize the domain `[your-vault-name].westcentralus.tokenvault.azure.net` depending on the service.
 1. Get the **App key** and **App secret** for use in upcoming steps.
 
-## Create the service 
+## Create the service resource
 
 You can create a service using ARM templates, or programmatically from the runtime. For ARM template creation and deployment refer to [this guide](https://github.com/joerob-msft/app-service-msi-tokenvault-dotnet), and specifically [this template](https://github.com/joerob-msft/app-service-msi-tokenvault-dotnet/blob/master/azuredeploy.json). To programmatically create the service resource refer to the **Create service** section under [Management API reference](/docs/management-api-reference.md).
 
 You need to set the following parameters on the service:
+
 1. The managed service name can be looked up in the table below under **Managed service name** corresponding to your service. See `[managed-service-name]` below
 1. The relevant **parameters** for **App key** and **App secret**. See `[service-client-id]` and `[service-client-secret]` below.
 
@@ -47,7 +49,7 @@ The service creation payload generally looks like below:
 
 | Service name   |  Managed service name | Developer site  |   Parameters   |  Special instructions | 
 |-----|-------|--------|-------|--------|
-| Dropbox | `dropbox` | https://www.dropbox.com/developers/apps | App key, App secret, Redirect URIs  |  [Create a Dropbox service](\service-definition-reference\dropbox.md)
+| Dropbox | `dropbox` | https://www.dropbox.com/developers/apps | App key, App secret, Redirect URIs  |  [Create a Dropbox service resource](\service-definition-reference\dropbox.md)
 | Twitter | `twitter` | https://developer.twitter.com/en/apps | API key, API secret key, Callback URL |
 | Facebook | `facebook` | https://developers.facebook.com/apps | App ID, App Secret |
 | Generic OAuth 2.0| `oauth2generic`| Refer to service developer page. | Typically: App key, App secret, Redirect URI |

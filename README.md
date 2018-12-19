@@ -34,17 +34,17 @@ The service consists of two distinct REST-based Application Programming Interfac
 | - Service | Vault | Management, Runtime | CreateOrUpdate, Read, Delete, List |
 | - - Token | Service | Management, Runtime | CreateOrUpdate, Read, Delete, List, Login, Save, GetAccessToken |
 
-Token is the key resource that wraps the data needed of OAuth 2.0 token authentication. The user can perform login on a specific token resource, which then stores the refresh token inside it. The web application can then GetAccessToken, and use it at runtime to access the external service on behalf of the user.
+**Token** resource abstracts the data and functionality around OAuth 2.0 tokens. The user can perform login action on a specific token resource, which then abstracts the refresh and access tokens. The web application can then call the GetAccessToken action, and use the access token at runtime to call the external service on behalf of the user.
 
-Service resource represents a specific external service and its acoompanying authentication settings. We provide a list of managed service definitions that can be used to create a service resouce with minimal complexity. Usually client ID and client secret are the only parameters that need to be assigned upon service resource creation.
+**Service** resource represents a specific external service and its acoompanying authentication settings. We provide a list of managed service definitions that can be used to create a service resouce with minimal complexity. Usually client ID and client secret are the only parameters that need to be assigned upon service resource creation.
 
-The Vault resource is a container of tokens and services, and represents the scope at which billing takes effect, as well as the scope at which Azure resource operations can be performed in ARM.
+**Vault** resource is a container of tokens and services, and represents the scope at which billing takes effect, as well as the scope at which Azure resource operations can be performed in ARM.
 
-Access policy resources determine how security is applied to runtime operations. Currenly the access policies are set at the Vault level and apply to the following actions on Service and Token (CreateOrUpdate, Read, Delete, List). By default the principal who creates the vault is added with full access policy.
+**Access policy** resources determine how security is applied to runtime operations. Currenly the access policies are only set at the Vault level and apply to the actions (CreateOrUpdate, Read, Delete, List) on Service and Token resource. The principal of user who creates the vault is added with full access policy by default.
 
 ## Runtime APIs
 
-The runtime APIs are available through a dedicated web address for each token vault. They support most of the resource management actions, however they also support the all-important token operations like get-valid-token. They are meant for direct programmatic use and are more optimized for performance. The service host is `https://[token-vault-name].westcentralus.tokenvault.azure.net`.
+The runtime APIs are available through a dedicated web address for each token vault. They support most of the resource management actions, however they also support the all-important token operations like get-access-token. They are meant for direct programmatic use and are more optimized for performance. The service host is `https://[token-vault-name].westcentralus.tokenvault.azure.net`.
 
 See **[Runtime API reference](/docs/runtime-api-reference.md)** for more details.
 

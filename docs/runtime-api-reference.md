@@ -4,7 +4,6 @@
 
 The runtime APIs are available through a dedicated web address for each token vault. They provide token operations like get-valid-token, in addition to supporting most of the resource management actions. Runtime APIs are meant for direct programmatic access and are better optimized for performance. The service host is typically available at `https://[token-vault-name].westcentralus.tokenvault.azure.net`.
 
-
 # Calling the APIs with Rest Client extension
 
 ## Pre-requisites

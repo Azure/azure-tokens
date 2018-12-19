@@ -19,7 +19,6 @@
 - **[Management API reference](/docs/management-api-reference.md)**
 - **[Runtime API reference](/docs/runtime-api-reference.md)**
 - **[Service definition reference](/docs/service-definition-reference.md)**
-- Runtime security through access policies [coming soon]
 
 # Programming interfaces
 

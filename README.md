@@ -3,7 +3,7 @@
 
 # "Token Vault" for App Service
 
-"Token Vault" for App Service is a general purpose OAuth Token Management service for developers. It helps simplify the process of authenticating and authorizing users across SaaS services, thus reducing the level of investment needed in ramping up, implementation and maintenance of security features.
+"Token Vault" for App Service is a general purpose OAuth Token Management service for developers. It helps simplify the process of authenticating and authorizing users across SaaS services, thus reducing the level of investment needed in ramping up, implementing and maintaining security features.
 
 # Let's get started!
 
@@ -13,6 +13,7 @@
     1. Clone, develop and debug locally, then deploy to Azure.
 1. **Send us feedback!** Either through our discussion alias or through [issues on GitHub](https://github.com/Azure/azure-tokens/issues).
 1. We are adding more reference material and walkthroughs here on this GitHub page.
+1. For a more **advanced multi-user implementation** example follow these [instructions on GitHub](https://github.com/joerob-msft/app-service-tokenvault-advanced).
 
 # References
 
@@ -22,7 +23,7 @@
 
 # Programming interfaces
 
-The service consists of two distinct REST-based Application Programming Interfaces (APIs), respectively for management and runtime operations. Both APIs are based on concepts of tokens, services, vaults and access policy as resources. Currently there are no client libraries available for the said REST-based APIs, but this is something we are thinking about for the future.
+The service consists of two distinct REST-based Application Programming Interfaces (APIs), respectively for **management** and **runtime** operations. Both APIs are based on concepts of tokens, services, vaults and access policy as resources. Currently there are no client libraries available for the said REST-based APIs, but this is something we are thinking about for the future.
 
 ## Resources
 
@@ -52,6 +53,8 @@ See **[Runtime API reference](/docs/runtime-api-reference.md)** for more details
 The management APIs are primarily meant to enable uniform resource management along with other Azure resources, either through REST-based requests or through deployment templates. They are based on Azure Resource Management (ARM) and can be used for programmatic resource mangement actions like read, create, update, delete, list etc. The ARM interface also enables joint template deployment of "Token Vault" and other Azure resoruces, in form of full solutions. The web address for these APIs are under `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault`.
 
 See **[Management API reference](/docs/management-api-reference.md)** for more details.
+
+*Vaults*, *access policies*, *services* are strictly managed by the developer. *Tokens* are also sometimes managed by the developer, however they can be assigned to, and accessed by users through the web application runtime, depending on the scenario.
 
 # Managed service definitions
 

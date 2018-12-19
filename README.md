@@ -62,7 +62,9 @@ We will have support for a long list of OAuth-based SaaS services in the future,
 
 See **[Service definition reference](/docs/service-definition-reference.md)** for more details.
 
-# Phishing attack vulnerability
+# Security
+
+## Phishing attack vulnerability
 
 The redirect pattern used in OAuth 2.0 authorization, is vulnerable to a certain class of phishing attacks. You should not worry about this, if you are a developer who is just getting stared with using "Token Vault". However when you integrate "Token Vault" with your production web application, implementing a post-login redirect pattern is needed to mitigate the said class of vulnerabilities. See **[Phishing attack vulnerability](/docs/phishing-attack-vulnerability.md)** for more details.
 

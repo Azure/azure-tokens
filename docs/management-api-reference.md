@@ -1,24 +1,26 @@
 > Note: "Token Vault" for App Service is in Private Preview, and can be accessed by contacting our team, and completing the onboarding process under NDA. Private Preview features like "Token Vault" are primarily meant to gather feedback, and should not be used in production. Support may be discontinued in the future.
 
-# What are management APIs?
+# Management APIs
 
 The management APIs are primarily meant to enable uniform resource management along with other Azure resources, either through REST-based requests or through deployment templates. They are based on Azure Resource Monitor (ARM) and can be used for programmatic resource mangement actions like read, create, update, delete, list etc. The ARM interface also enables joint template deployment of "Token Vault" and other Azure resoruces for deploying full solutions. These APIs are typically avaiable under `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]`.
-
 
 # Calling the APIs with Rest Client extension
 
 ## Pre-requisites
+
 1. [Visual Studio Code](https://code.visualstudio.com/) installed on your machine
 1. [HTTP REST Client extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) installed in Visual Studio Code
 1. [Git command line](https://git-scm.com/)
 
 ## Getting started with `.http` files
+
 1. Using command line to navigate to an empty folder and clone the repo by running the command `git clone https://github.com/Azure/azure-tokens.git`
 1. Run `code azure-tokens` to open the cloned folder in Visual Studio Code.
 1. Open `/docs/management-api-reference.http` in Visual Studio Code to get started.
 1. Update the following variables to reflect you own Azure environment.
     1. **`@subscriptionId`** should be set to the your Azure subscription ID.
     1. **`@resourceGroup`** should be set to the a resource you have contributor access to.
+    1. **`@vaultName`** should be set to the name of vault you are managing.
 1. Under the **List Vaults** section, click on the `Send request` link above `GET {{vaultsPath}}`. The *REST Client* extension will walk you through logging into Azure Resource Manager and resolve the value for `{{$aadToken}}`:
     1. Click on **Sign in** when a VS Code prompts you to sign in. The authorization code will get copied to your clipboard.
     1. Proceed through browser sign in by pasting in the authorization code and proceeding with usual AAD login.
@@ -73,7 +75,7 @@ A vault can be created by requesting a `PUT` operation against `https://manageme
     "properties": {
         "authorizedPostRedirectUrls": [
             "http://example.com/postlogin"
-        ]        
+        ]
     }
 }
 ```
@@ -107,33 +109,6 @@ A vault can be read by requesting a `DELETE` operation against `https://manageme
 Try this operation out in VS Code under **Delete vault** section of the [.http file](/docs/management-api-reference.http).
 
 # Service management operations
-
-## List services
-
-Services can be listed by requesting a `GET` operation against `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]/services`. The result should be `200 OK` with a payload similar to below. 
-
-```json
-{
-  "value": [{
-    "id": "/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]/services/testservice1",
-    "name": "testservice1",
-    "type": "Microsoft.TokenVault/vaults/services",
-    "properties": {
-      "tokenParameters": {},
-      "authentication": {
-        "managedIdentityProvider": {
-          "name": "dropbox"
-        }
-      },
-      "displayName": "testService1"
-    }
-  },
-  ...
-  ]
-}
-```
-
-Try this operation out in VS Code under **List services** section of the [.http file](/docs/management-api-reference.http).
 
 ## Create or update service
 
@@ -181,17 +156,44 @@ A service can be read by requesting a `GET` operation against `https://managemen
 
 Try this operation out in VS Code under **Read service** section of the [.http file](/docs/management-api-reference.http).
 
-<!-- ## Delete service
+## Delete service
 
 A service can be read by requesting a `DELETE` operation against `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]/services/[service-name]`with no payload. The result should be `200 OK`.
 
-Try this operation out in VS Code under **Delete service** section of the [.http file](/docs/management-api-reference.http). -->
+Try this operation out in VS Code under **Delete service** section of the [.http file](/docs/management-api-reference.http).
+
+## List services
+
+Services can be listed by requesting a `GET` operation against `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]/services`. The result should be `200 OK` with a payload similar to below. 
+
+```json
+{
+  "value": [{
+    "id": "/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]/services/testservice1",
+    "name": "testservice1",
+    "type": "Microsoft.TokenVault/vaults/services",
+    "properties": {
+      "tokenParameters": {},
+      "authentication": {
+        "managedIdentityProvider": {
+          "name": "dropbox"
+        }
+      },
+      "displayName": "testService1"
+    }
+  },
+  ...
+  ]
+}
+```
+
+Try this operation out in VS Code under **List services** section of the [.http file](/docs/management-api-reference.http).
 
 # Token management operations
 
 ## List tokens
 
-Tokens can be listed by requesting a `GET` operation against `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]/services/[service-name]/tokens`. The result should be `200 OK` with a payload similar to below. 
+Tokens can be listed by requesting a `GET` operation against `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]/services/[service-name]/tokens`. The result should be `200 OK` with a payload similar to below.
 
 ```json
 {
@@ -239,7 +241,7 @@ Try this operation out in VS Code under **Create or update service** section of 
 
 ## Read token
 
-A token can be read by requesting a `GET` operation against `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]/services/[service-name]/tokens/[token-name]`. The resulting payload will be similar to below. 
+A token can be read by requesting a `GET` operation against `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]/services/[service-name]/tokens/[token-name]`. The resulting payload will be similar to below.
 
 ```json
 {
@@ -265,8 +267,8 @@ A token can be read by requesting a `GET` operation against `https://management.
 
 Try this operation out in VS Code under **Read token** section of the [.http file](/docs/management-api-reference.http).
 
-<!-- ## Delete service
+## Delete token
 
 A token can be read by requesting a `DELETE` operation against `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault/vaults/[token-vault-name]/services/[service-name]/tokens/[token-name]`with no payload. The result should be `200 OK`.
 
-Try this operation out in VS Code under **Delete token** section of the [.http file](/docs/management-api-reference.http). -->
+Try this operation out in VS Code under **Delete token** section of the [.http file](/docs/management-api-reference.http).

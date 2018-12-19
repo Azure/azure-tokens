@@ -11,10 +11,6 @@
 @serviceName = testService
 @tokenName = testToken
 @policyName = testPolicy
-@tenantId = [your-tenant-id]
-@objectId = [your-object-id]
-@dropboxClientId = [your-dropbox-client-id]
-@dropboxClientSecret = [your-dropbox-client-secret]
 
 #########################################################
 ###### List vaults
@@ -84,8 +80,8 @@ Content-Type: application/json; charset=utf-8
         "name": "dropbox"
       },
       "parameters": {
-        "clientid": "{{dropboxClientId}}",
-        "clientsecret": "{{dropboxClientSecret}}"
+        "clientid": "[your-dropbox-client-id]",
+        "clientsecret": "[your-dropbox-client-secret]"
       }
     },
     "displayName": "{{serviceName}}"
@@ -179,8 +175,8 @@ Content-Type: application/json; charset=utf-8
   "properties": {
     "name": "{{policyName}}",
     "principal": {
-      "tenantId": "{{tenantId}}",
-      "objectId": "{{objectId}}"
+      "tenantId": "[your-tenant-id]",
+      "objectId": "[your-object-id]"
     },
     "permissions": ["Get", "List", "CreateOrUpdate", "Delete"]
   }
@@ -199,8 +195,8 @@ Content-Type: application/json; charset=utf-8
     "properties": {
         "name" : "{{policyName}}",
         "principal": {
-            "tenantId": "{{tenantId}}",
-            "objectId": "{{objectId}}"
+            "tenantId": "[your-tenant-id]",
+            "objectId": "[your-object-id]"
         },
         "permissions": ["Get", "List", "CreateOrUpdate", "Delete"]
     }

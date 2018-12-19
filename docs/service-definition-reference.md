@@ -2,19 +2,18 @@
 
 # General recipe for creating services
 
-"Token Vault" requires you to create a developer account with the service that you want your users to authenticate with. This way the corresponding service, say Dropbox for example, can have a direct relationship with you as a developer and can notify you of issues or unusual activity.
+In order to take advantage of "Token Vault" against an external service (e.g. Dropbox), you first need to create a developer account them. The corresponding service will have a direct relationship with you as the app developer and can notify you of issues or unusual activity. The can also enforce security and usability limits on a per-application basis.
 
-In general, the following are the required steps to create a service resource:
+The following are the general set of steps required to create a service resource:
 
 ## Register your app with the service
 
-Register an app with the service you want to call on behalf of your users. This is typically done through the service's developer site:
+Register an app with the service (eg Dropbox) you want to call on behalf of your users. This is typically done through the service's developer site:
 
-1. Go to the service's **Developer site**. For example go to the [Dropbox developer site](https://www.dropbox.com/developers/apps).
+1. Go to the service's **Developer site**. For example visit the [Dropbox developer site](https://www.dropbox.com/developers/apps).
 1. create an account with the service using your contact information.
 1. Create an app registration, and set the redirect URI to `https://[your-vault-name].westcentralus.tokenvault.azure.net/redirect`.
-1. You may have to authorize the domain `[your-vault-name].westcentralus.tokenvault.azure.net` depending on the service.
-1. Get the **App key** and **App secret** for use in upcoming steps.
+1. Record the **App key** and **App secret** to be used in upcoming steps.
 
 ## Create the service resource
 
@@ -24,6 +23,7 @@ You need to set the following parameters on the service:
 
 1. The managed service name can be looked up in the table below under **Managed service name** corresponding to your service. See `[managed-service-name]` below
 1. The relevant **parameters** for **App key** and **App secret**. See `[service-client-id]` and `[service-client-secret]` below.
+1. Depending on the service, you may have to set additional parameters (e.g. `scope`). You can lookup these values in the table below. 
 
 The service creation payload generally looks like below:
 
@@ -49,10 +49,10 @@ The service creation payload generally looks like below:
 
 | Service name   |  Managed service name | Developer site  |   Parameters   |  Special instructions | 
 |-----|-------|--------|-------|--------|
-| Dropbox | `dropbox` | https://www.dropbox.com/developers/apps | App key, App secret, Redirect URIs  |  [Create a Dropbox service resource](\service-definition-reference\dropbox.md)
-| Twitter | `twitter` | https://developer.twitter.com/en/apps | API key, API secret key, Callback URL |
-| Facebook | `facebook` | https://developers.facebook.com/apps | App ID, App Secret |
-| Generic OAuth 2.0| `oauth2generic`| Refer to service developer page. | Typically: App key, App secret, Redirect URI |
+| Dropbox | `dropbox` | https://www.dropbox.com/developers/apps | App key (`clientid`), App secret (`clientsecret`), Redirect URIs(set on app)  |  
+| Twitter | `twitter` | https://developer.twitter.com/en/apps | API key(`clientid`), API secret key(`clientsecret`), Callback URL(set on app) |
+| Facebook | `facebook` | https://developers.facebook.com/apps | App ID(`clientid`), App Secret(`clientsecret`) |
+| Generic OAuth 2.0| `oauth2generic`| Refer to service developer page. | Typically: App key(`clientid`), App secret(`clientsecret`), Redirect URI, and many more ... | [Create an OAuth 2.0 generic service resource](\service-definition-reference\oauth2-generic.md) |
 | [More coming soon] | | | |  
 
 ## Dropbox

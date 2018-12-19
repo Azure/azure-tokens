@@ -57,3 +57,25 @@ Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
 
 GET {{runtimeBaseUrl}}/services/{{serviceName}}
 Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+
+#########################################################
+###### Create or update service
+#########################################################
+ 
+PUT {{runtimeBaseUrl}}/services/{{serviceName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "authentication": {
+        "managedIdentityProvider": {
+            "name": "dropbox"
+        },
+        "parameters": {
+            "clientid": "[your-dropbox-client-id]",
+            "clientsecret": "[your-dropbox-client-secret]"
+        }
+    },
+    "displayName": "{{serviceName}}"  
+}

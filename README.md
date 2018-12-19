@@ -1,7 +1,7 @@
 
 > Note: "Token Vault" for App Service is in Private Preview, and can be accessed by contacting our team, and completing the onboarding process under NDA. Private Preview features like "Token Vault" are primarily meant to gather feedback, and should not be used in production. Support may be discontinued in the future.
 
-# What is "Token Vault" for App Service?
+# "Token Vault" for App Service
 
 "Token Vault" for App Service is a general purpose OAuth Token Management service for developers. It helps simplify the process of authenticating and authorizing users across SaaS services, thus reducing the level of investment needed in ramping up, implementing and maintaining security features.
 
@@ -20,32 +20,39 @@
 - **[Management API reference](/docs/management-api-reference.md)**
 - **[Runtime API reference](/docs/runtime-api-reference.md)**
 - **[Service definition reference](/docs/service-definition-reference.md)**
-- Runtime security through access policies [coming soon]
 
 # Programming interfaces
 
 The service consists of two distinct REST-based Application Programming Interfaces (APIs), respectively for **management** and **runtime** operations. Both APIs are based on concepts of tokens, services, vaults and access policy as resources. Currently there are no client libraries available for the said REST-based APIs, but this is something we are thinking about for the future.
 
-## Management APIs on ARM
+## Resources
 
-The management APIs are primarily meant to enable uniform resource management along with other Azure resources, either through REST-based requests or through deployment templates. They are based on Azure Resource Manager (ARM) and can be used for programmatic resource mangement actions like read, create, update, delete, list etc. The ARM interface also enables joint template deployment of "Token Vault" and other Azure resoruces, in form of full solutions. The web address for these APIs are under `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault`.
+| Resourse name | Parent resource | API availability | Supported actions |
+|---------------|---|--|---|
+| Vault | Resource group | Management | CreateOrUpdate, Read, Delete, List |
+| - Access policy | Vault | Management | CreateOrUpdate, Read, Delete, List |
+| - Service | Vault | Management, Runtime | CreateOrUpdate, Read, Delete, List |
+| - - Token | Service | Management, Runtime | CreateOrUpdate, Read, Delete, List, Login, Save, GetAccessToken |
 
-See **[Management API reference](/docs/management-api-reference.md)** for more details.
+**Token** resource abstracts the data and functionality around OAuth 2.0 tokens. The user can perform login action on a specific token resource, which then abstracts the refresh and access tokens. The web application can then call the GetAccessToken action, and use the access token at runtime to call the external service on behalf of the user.
+
+**Service** resource represents a specific external service and its acoompanying authentication settings. We provide a list of managed service definitions that can be used to create a service resouce with minimal complexity. Usually client ID and client secret are the only parameters that need to be assigned upon service resource creation.
+
+**Vault** resource is a container of tokens and services, and represents the scope at which billing takes effect, as well as the scope at which Azure resource operations can be performed in ARM.
+
+**Access policy** resources determine how security is applied to runtime operations. Currenly the access policies are only set at the Vault level and apply to the actions (CreateOrUpdate, Read, Delete, List) on Service and Token resource. The principal of user who creates the vault is added with full access policy by default.
 
 ## Runtime APIs
 
-The runtime APIs are available through a dedicated web address for each token vault. They support most of the resource management actions, however they also support the all-important token operations like get-valid-token. They are meant for direct programmatic use and are more optimized for performance. The service host is `https://[token-vault-name].westcentralus.tokenvault.azure.net`.
+The runtime APIs are available through a dedicated web address for each token vault. They support most of the resource management actions, however they also support the all-important token operations like get-access-token. They are meant for direct programmatic use and are more optimized for performance. The service host is `https://[token-vault-name].westcentralus.tokenvault.azure.net`.
 
 See **[Runtime API reference](/docs/runtime-api-reference.md)** for more details.
 
-## Resource concepts
+## Management APIs (on Azure Resource Manager)
 
-| Resourse name | Parent resource | API availability |
-|---------------|---|--|
-| Vault | Resource group | Management |
-| - Access policy | Vault | Management |
-| - Service | Vault | Management, Runtime |
-| - - Token | Service | Management, Runtime |
+The management APIs are primarily meant to enable uniform resource management along with other Azure resources, either through REST-based requests or through deployment templates. They are based on Azure Resource Management (ARM) and can be used for programmatic resource mangement actions like read, create, update, delete, list etc. The ARM interface also enables joint template deployment of "Token Vault" and other Azure resoruces, in form of full solutions. The web address for these APIs are under `https://management.azure.com/subscriptions/[subscription-id]/resourceGroups/[resource-group]/providers/Microsoft.TokenVault`.
+
+See **[Management API reference](/docs/management-api-reference.md)** for more details.
 
 *Vaults*, *access policies*, *services* are strictly managed by the developer. *Tokens* are also sometimes managed by the developer, however they can be assigned to, and accessed by users through the web application runtime, depending on the scenario.
 
@@ -55,15 +62,11 @@ We will have support for a long list of OAuth-based SaaS services in the future,
 
 See **[Service definition reference](/docs/service-definition-reference.md)** for more details.
 
-# Runtime security
-
-## Access Policies
-
-[Coming soon]
+# Security
 
 ## Phishing attack vulnerability
 
-See **[Phishing attack vulnerability](/docs/phishing-attack-vulnerability.md)** for more details.
+The redirect pattern used in OAuth 2.0 authorization, is vulnerable to a certain class of phishing attacks. You should not worry about this, if you are a developer who is just getting stared with using "Token Vault". However when you integrate "Token Vault" with your production web application, implementing a post-login redirect pattern is needed to mitigate the said class of vulnerabilities. See **[Phishing attack vulnerability](/docs/phishing-attack-vulnerability.md)** for more details.
 
 # Appendix
 

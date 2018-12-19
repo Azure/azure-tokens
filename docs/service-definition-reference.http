@@ -1,0 +1,337 @@
+#########################################################
+#### Variables
+#########################################################
+
+@subscriptionId = [your-subscription-id]
+@resourceGroup = [your-resource-group-name]
+@vaultName = [your-vault-name]
+@serviceName = testService
+@tokenName = testToken
+@runtimeBaseUrl = https://{{vaultName}}.westcentralus.tokenvault.azure.net
+
+## NOTE: REPLACE [your-domain.com] WITH YOUR DOMAIN NAME. For example if your personal user Id is me@mycompany.com,
+## the string [your-domain.com] should be replaced with mycompany.com everywhere in this document
+
+#########################################################
+###### Create dropbox service.
+#########################################################
+ 
+PUT {{runtimeBaseUrl}}/services/dropbox{{serviceName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "authentication": {
+        "managedIdentityProvider": {
+        "name": "dropbox"
+        },
+        "parameters": {
+        "clientid": "[your-dropbox-client-id]",
+        "clientsecret": "[your-dropbox-client-secret]"
+        }
+    },
+    "displayName": "dropbox{{serviceName}}"  
+}
+
+### Create token.
+
+PUT {{runtimeBaseUrl}}/services/dropbox{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "displayname" : "testtoken"
+}
+
+### Authenticate and get access token.
+
+POST {{runtimeBaseUrl}}/services/dropbox{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+### Call dropbox with acces stoken.
+POST https://api.dropboxapi.com/2/files/list_folder
+Authorization: Bearer [your-dropbox-access-token]
+Content-Type: application/json
+
+{"path":""}
+
+#########################################################
+###### Create AAD graph service.
+#########################################################
+
+PUT {{runtimeBaseUrl}}/services/aad{{serviceName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "tokenParameters": {
+        "resourceUri": {
+            "parameterType": "string",
+            "defaultValue": "https://graph.microsoft.com"
+        }
+    },
+    "authentication": {
+        "managedIdentityProvider": {
+            "name": "aad"
+        },
+        "parameters": {
+            "clientid": "[your-aad-client-id]",
+            "clientsecret": "[your-aad-client-secret]",
+            "resourceUri": "https://graph.microsoft.com"
+        }
+    },
+    "displayName": "aad{{serviceName}}"    
+}
+
+### Create token.
+
+PUT {{runtimeBaseUrl}}/services/aad{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{ 
+    "displayname" : "testtoken"
+}
+
+### Authenticate and get access token.
+
+POST {{runtimeBaseUrl}}/services/aad{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+### Call AAD graph using access token.
+
+GET https://graph.microsoft.com/v1.0/me/
+Authorization: Bearer [your-aad-access-token]
+
+### Call SharePoint using access token.
+
+GET https://graph.microsoft.com/v1.0/sites/root
+Authorization: Bearer [your-aad-access-token]
+
+### Call Outlook/Exchange using access token.
+
+GET https://graph.microsoft.com/v1.0/me/mailfolders/inbox/messages?#top=10
+Authorization: Bearer [your-aad-access-token]
+
+#########################################################
+###### Create LinkedIn service.
+#########################################################
+
+PUT {{runtimeBaseUrl}}/services/linkedin{{serviceName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "tokenParameters": {
+    },
+    "authentication": {
+        "managedIdentityProvider": {
+            "name": "linkedin"
+        },
+        "parameters": {
+            "clientid": "[your-linkedin-client-id]",
+            "clientsecret": "[your-linkedin-client-secret]",
+        }
+    },
+    "displayName": "linkedin{{serviceName}}"    
+}
+
+### Create token.
+
+PUT {{runtimeBaseUrl}}/services/linkedin{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{ 
+    "displayname" : "testtoken"
+}
+
+### Authenticate and get access token.
+
+POST {{runtimeBaseUrl}}/services/linkedin{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+### Call outlook using access token.
+### Reference: https://docs.microsoft.com/en-us/linkedin/shared/authentication/authorization-code-flow?context=linkedin/consumer/context
+
+GET https://api.linkedin.com/v2/me
+Authorization: Bearer [your-linkedin-access-token]
+
+#########################################################
+###### Create instagram service
+#########################################################
+ 
+PUT {{runtimeBaseUrl}}/services/instagram{{serviceName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "authentication": {
+        "managedIdentityProvider": {
+        "name": "instagram"
+        },
+        "parameters": {
+        "clientid": "[your-instagram-client-id]",
+        "clientsecret": "[your-instagram-client-secret]",
+        "scopes" : "basic"
+        }
+    },
+    "displayName": "instagram{{serviceName}}"  
+}
+
+### Create token.
+
+PUT {{runtimeBaseUrl}}/services/instagram{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "displayname" : "testtoken"
+}
+
+### Authenticate and get access token.
+
+POST {{runtimeBaseUrl}}/services/instagram{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+### Call instagram using access token
+
+GET https://api.instagram.com/v1/users/self/?access_token=[your-instagram-access-token]
+
+#########################################################
+###### Create OAuth 2.0 generic service - with dropbox
+#########################################################
+PUT {{runtimeBaseUrl}}/services/oauth2generic{{serviceName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "tokenParameters": {
+    },
+    "authentication": {
+        "managedIdentityProvider": {
+            "name": "oauth2generic"
+        },
+        "parameters": {
+            "clientid": "[your-dropbox-client-id]",
+            "clientsecret": "[your-dropbox-client-secret]",
+            "AuthorizationUrlTemplate": "https://www.dropbox.com/oauth2/authorize",
+            "AuthorizationUrlQueryStringTemplate": "?client_id={ClientId}&response_type=code&redirect_uri={RedirectUrl}&force_reapprove=true&state={State}",
+            "TokenUrlTemplate": "https://api.dropbox.com/oauth2/token",
+            "TokenBodyTemplate": "code={Code}&grant_type=authorization_code&redirect_uri={RedirectUrl}&client_id={ClientId}&client_secret={ClientSecret}",
+            "RefreshUrlTemplate": "https://api.dropbox.com/oauth2/token",                
+            "RefreshBodyTemplate": "refresh_token={RefreshToken}&grant_type=refresh_token&client_id={ClientId}&client_secret={ClientSecret}"                
+        }
+    },
+    "displayName": "Oauth2Generic{{serviceName}}"    
+}
+
+### Create token.
+
+PUT {{runtimeBaseUrl}}/services/oauth2generic{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "displayname" : "testtoken"
+}
+
+### Autheticate and get access token.
+
+POST {{runtimeBaseUrl}}/services/oauth2generic{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+### Call OAuth2 generic service using access token.
+
+POST https://api.dropboxapi.com/2/files/list_folder
+Authorization: Bearer [your-dropbox-access-token]
+Content-Type: application/json
+
+{"path":""}
+
+#########################################################
+###### Create Twitter service.
+#########################################################
+
+PUT {{runtimeBaseUrl}}/services/twitter{{serviceName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "tokenParameters": {
+    },
+    "authentication": {
+        "managedIdentityProvider": {
+            "name": "twitter"
+        },
+        "parameters": {
+            "clientid": "[your-twitter-client-id]",
+            "clientsecret": "[your-twitter-client-secret]",
+        }
+    },
+    "displayName": "twitter{{serviceName}}"    
+}
+
+### Create token.
+
+PUT {{runtimeBaseUrl}}/services/twitter{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{ 
+    "displayname" : "testtoken"
+}
+
+### Authenticate and get access token.
+
+POST {{runtimeBaseUrl}}/services/twitter{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+### Call outlook using access token.
+### Reference - https://developer.twitter.com/en/docs/basics/authentication/overview/3-legged-oauth
+
+GET https://api.twitter.com/1.1/followers/list.json
+Authorization: Bearer [your-twitter-access-token]
+
+#########################################################
+###### Create Facebook service.
+#########################################################
+
+PUT {{runtimeBaseUrl}}/services/facebook{{serviceName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{
+    "tokenParameters": {
+    },
+    "authentication": {
+        "managedIdentityProvider": {
+            "name": "facebook"
+        },
+        "parameters": {
+            "clientid": "[your-facebook-client-id]",
+            "clientsecret": "[your-facebook-client-secret]",
+        }
+    },
+    "displayName": "twitter{{serviceName}}"    
+}
+
+### Create token.
+
+PUT {{runtimeBaseUrl}}/services/facebook{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+Content-Type: application/json; charset=utf-8
+
+{ 
+    "displayname" : "testtoken"
+}
+
+### Authenticate and get access token.
+
+POST {{runtimeBaseUrl}}/services/facebook{{serviceName}}/tokens/testtoken
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+### Call outlook using access token.
+### Reference:  https://developers.facebook.com/docs/graph-api/using-graph-api/
+
+GET https://graph.facebook.com/me?access_token=[your-facebook-access-token]

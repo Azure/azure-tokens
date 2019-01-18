@@ -27,7 +27,7 @@ The service consists of two distinct REST-based Application Programming Interfac
 
 ## Resources
 
-| Resourse name | Parent resource | API availability | Supported actions |
+| Resource name | Parent resource | API availability | Supported actions |
 |---------------|---|--|---|
 | Vault | Resource group | Management | CreateOrUpdate, Read, Delete, List |
 | - Access policy | Vault | Management | CreateOrUpdate, Read, Delete, List |
@@ -40,7 +40,7 @@ The service consists of two distinct REST-based Application Programming Interfac
 
 **Vault** resource is a container of tokens and services, and represents the scope at which billing takes effect, as well as the scope at which Azure resource operations can be performed in ARM.
 
-**Access policy** resources determine how security is applied to runtime operations. Currenly the access policies are only set at the Vault level and apply to the actions (CreateOrUpdate, Read, Delete, List) on Service and Token resource. The principal of user who creates the vault is added with full access policy by default.
+**Access policy** resources determine how security is applied to runtime operations. Access policies are inherited, i.e. those set at the Vault level apply to the actions (CreateOrUpdate, Read, Delete, List) on Service and Token resource. The principal of user who creates the vault is added with full access policy by default.
 
 ## Runtime APIs
 

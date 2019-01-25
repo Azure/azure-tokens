@@ -28,10 +28,17 @@ Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
 
 
 #########################################################
-###### Get valid access token
+###### Get token
 #########################################################
 
 POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}
+Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
+
+#########################################################
+###### Get access token
+#########################################################
+
+POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}/accesstoken
 Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
 
 #########################################################

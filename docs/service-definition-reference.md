@@ -56,7 +56,7 @@ The service creation payload generally looks like below:
 | Twitter | `twitter` | https://developer.twitter.com/en/apps | API key (`clientid`), API secret key (`clientsecret`), Callback URL (set on app) |
 | Facebook | `facebook` | https://developers.facebook.com/apps | App ID (`clientid`), App Secret (`clientsecret`) |
 | Generic OAuth 2.0| `oauth2generic`|  | App key (`clientid`), App secret (`clientsecret`), Redirect URI (set on app), and **many more additional parameters** ... | See the OAuth 2.0 generic section below |
-| Google | `google` | [coming soon]
+| Google | `google` | https://console.developers.google.com/apis/dashboard | Client ID (`clientid`), Client Secret (`clientsecret`)
 | Others | | [coming soon]
 
 ## Dropbox

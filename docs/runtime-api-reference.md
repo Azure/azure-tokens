@@ -89,19 +89,11 @@ Try this operation out in VS Code under **Read token** section of the [.http fil
 
 ## Get valid access token
 
-A token can be created by requesting a `POST` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]` with the payload below. The result should be `200 OK`.
-
-```json
-{
-  "Parameters": {},
-  "Value": {
-    "AccessToken": "[valid-access-token]"
-  },
-  "ExpiresIn": "[access-token-expiry-date]"
-}
-```
+A token can be retrieved by requesting a `POST` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]` with the an empty body payload. The result should be `200 OK`.
 
 Try this operation out in VS Code under **Get valid access token** section of the [.http file](/docs/runtime-api-reference.http).
+
+Alternately, an access token only without the token metadata can be retrieved by requesting a `POST` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]/accesstoken` with the an empty body payload. The result should be `200 OK`.
 
 ## Save token (after post-login redirect)
 

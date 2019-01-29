@@ -11,7 +11,7 @@
 1. Once enrolled, **deploy your first "Token Vault"** for App Service by following [instructions on GitHub](https://github.com/joerob-msft/app-service-msi-tokenvault-dotnet).
     1. Deploy and use the Site on Azure.
     1. Clone, develop and debug locally, then deploy to Azure.
-1. **Send us feedback!** Either through our discussion alias or through [issues on GitHub](https://github.com/Azure/azure-tokens/issues).
+1. **Send us feedback!** Either through our discussion alias (tokens@microsoft.com) or through [issues on GitHub](https://github.com/Azure/azure-tokens/issues).
 1. We are adding more reference material and walkthroughs here on this GitHub page.
 1. For a more **advanced multi-user implementation** example follow these [instructions on GitHub](https://github.com/joerob-msft/app-service-tokenvault-advanced).
 

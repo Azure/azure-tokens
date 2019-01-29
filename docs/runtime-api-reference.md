@@ -97,7 +97,7 @@ Alternately, an access token only without the token metadata can be retrieved by
 
 ## Save token (after post-login redirect)
 
-Fully secure ntegration of "Token Vault" with you web application, requires implementing the post-login redirect patter. Please refer to the [Phishing attack vulnerability](phishing-attack-vulnerability.md) topic for the reasons why this is required. The said pattern includes a last step of saving the token by requesting a `POST` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]/save` with the payload below. The result should be `200 OK`.
+Fully secure integration of "Token Vault" with you web application, requires implementing the post-login redirect pattern. Please refer to the [Phishing attack vulnerability](phishing-attack-vulnerability.md) topic for the reasons why this is required. The said pattern includes a last step of saving the token by requesting a `POST` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]/save` with the payload below. The result should be `200 OK`.
 
 ```json
 {

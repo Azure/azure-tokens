@@ -49,7 +49,7 @@ Authorization: {{$aadToken [your-domain.com] aud:https://tokenvault.azure.net}}
 
 ## Create or update token
 
-A token can be created by requesting a `PUT` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]` with the payload below. The result should be `201 Created`.
+A token can be created by requesting a `PUT` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/tokens/[token-name]` with the payload below. The result should be `201 Created`.
 
 ```json
 {
@@ -89,15 +89,15 @@ Try this operation out in VS Code under **Read token** section of the [.http fil
 
 ## Get valid access token
 
-A token can be retrieved by requesting a `POST` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]` with the an empty body payload. The result should be `200 OK`.
+A token can be retrieved by requesting a `POST` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/tokens/[token-name]` with the an empty body payload. The result should be `200 OK`.
 
 Try this operation out in VS Code under **Get valid access token** section of the [.http file](/docs/runtime-api-reference.http).
 
-Alternately, an access token only without the token metadata can be retrieved by requesting a `POST` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]/accesstoken` with the an empty body payload. The result should be `200 OK`.
+Alternately, an access token only without the token metadata can be retrieved by requesting a `POST` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/tokens/[token-name]/accesstoken` with the an empty body payload. The result should be `200 OK`.
 
 ## Save token (after post-login redirect)
 
-Fully secure integration of "Token Vault" with you web application, requires implementing the post-login redirect pattern. Please refer to the [Phishing attack vulnerability](phishing-attack-vulnerability.md) topic for the reasons why this is required. The said pattern includes a last step of saving the token by requesting a `POST` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]/save` with the payload below. The result should be `200 OK`.
+Fully secure integration of "Token Vault" with you web application, requires implementing the post-login redirect pattern. Please refer to the [Phishing attack vulnerability](phishing-attack-vulnerability.md) topic for the reasons why this is required. The said pattern includes a last step of saving the token by requesting a `POST` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/tokens/[token-name]/save` with the payload below. The result should be `200 OK`.
 
 ```json
 {
@@ -121,7 +121,7 @@ Try this operation out in VS Code under **Save token** section of the [.http fil
 
 ## Delete token
 
-A token can be read by requesting a `DELETE` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/token/[token-name]`with no payload. The result should be `200 OK`.
+A token can be read by requesting a `DELETE` operation against `https://[token-vault-name].westcentralus.tokenvault.azure.net/services/[service-name]/tokens/[token-name]`with no payload. The result should be `200 OK`.
 
 Try this operation out in VS Code under **Delete token** section of the [.http file](/docs/runtime-api-reference.http).
 

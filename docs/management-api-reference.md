@@ -230,7 +230,6 @@ A token can be created by requesting a `PUT` operation against `https://manageme
 
 ```json
 {
-  "name": "testtoken",
   "properties": {
     "displayName": "Test Dropbox token"
   }

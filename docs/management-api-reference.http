@@ -124,7 +124,6 @@ Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
 
 {
-  "name": "{{tokenName}}",
   "properties": {
     "displayName": "{{tokenName}}"
   }

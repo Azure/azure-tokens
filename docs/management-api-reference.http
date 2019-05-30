@@ -4,28 +4,28 @@
 
 @subscriptionId = [your-subscription-id]
 @resourceGroup = [your-resource-group-name]
-@vaultName = [your-vault-name]
+@storeName = [your-store-name]
 @armBaseUrl = https://management.azure.com/subscriptions
-@vaultsPath = {{armBaseUrl}}/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.TokenVault/vaults
+@storesPath = {{armBaseUrl}}/{{subscriptionId}}/resourceGroups/{{resourceGroup}}/providers/Microsoft.Token/stores
 @version = ?api-version=2018-08-01-preview
 @serviceName = testService
 @tokenName = testToken
 @policyName = testPolicy
 
 #########################################################
-###### List vaults
+###### List stores
 #########################################################
  
-GET {{vaultsPath}} 
+GET {{storesPath}} 
     {{version}}
 Authorization: {{$aadToken}}
 
 
 #########################################################
-###### Create or update vault
+###### Create or update store
 #########################################################
  
-PUT {{vaultsPath}}/{{vaultName}}
+PUT {{storesPath}}/{{storeName}}
     {{version}}
 Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
@@ -40,18 +40,18 @@ Content-Type: application/json; charset=utf-8
 }
 
 #########################################################
-###### Read vault
+###### Read store
 #########################################################
  
-GET {{vaultsPath}}/{{vaultName}}
+GET {{storesPath}}/{{storeName}}
     {{version}}
 Authorization: {{$aadToken}}
 
 #########################################################
-###### Delete vault
+###### Delete store
 #########################################################
  
-DELETE {{vaultsPath}}/{{vaultName}}
+DELETE {{storesPath}}/{{storeName}}
     {{version}}
 Authorization: {{$aadToken}}
 
@@ -59,7 +59,7 @@ Authorization: {{$aadToken}}
 ###### List services
 #########################################################
  
-GET {{vaultsPath}}/{{vaultName}}/services 
+GET {{storesPath}}/{{storeName}}/services 
     {{version}}
 Authorization: {{$aadToken}}
 
@@ -68,7 +68,7 @@ Authorization: {{$aadToken}}
 ###### Create or update service
 #########################################################
  
-PUT {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
+PUT {{storesPath}}/{{storeName}}/services/{{serviceName}}
     {{version}}
 Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
@@ -92,7 +92,7 @@ Content-Type: application/json; charset=utf-8
 ###### Read service
 #########################################################
  
-GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
+GET {{storesPath}}/{{storeName}}/services/{{serviceName}}
     {{version}}
 Authorization: {{$aadToken}}
 
@@ -101,7 +101,7 @@ Authorization: {{$aadToken}}
 ###### Delete service
 #########################################################
  
-DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}
+DELETE {{storesPath}}/{{storeName}}/services/{{serviceName}}
     {{version}}
 Authorization: {{$aadToken}}
 
@@ -110,7 +110,7 @@ Authorization: {{$aadToken}}
 ###### List tokens
 #########################################################
  
-GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens 
+GET {{storesPath}}/{{storeName}}/services/{{serviceName}}/tokens 
     {{version}}
 Authorization: {{$aadToken}}
 
@@ -118,7 +118,7 @@ Authorization: {{$aadToken}}
 ###### Create or update token
 #########################################################
  
-PUT {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
+PUT {{storesPath}}/{{storeName}}/services/{{serviceName}}/tokens/{{tokenName}}
     {{version}}
 Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
@@ -133,7 +133,7 @@ Content-Type: application/json; charset=utf-8
 ###### Read token
 #########################################################
  
-GET {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
+GET {{storesPath}}/{{storeName}}/services/{{serviceName}}/tokens/{{tokenName}}
     {{version}}
 Authorization: {{$aadToken}}
 
@@ -141,7 +141,7 @@ Authorization: {{$aadToken}}
 ###### Delete token
 #########################################################
  
-DELETE {{vaultsPath}}/{{vaultName}}/services/{{serviceName}}/tokens/{{tokenName}}
+DELETE {{storesPath}}/{{storeName}}/services/{{serviceName}}/tokens/{{tokenName}}
     {{version}}
 Authorization: {{$aadToken}}
 
@@ -149,7 +149,7 @@ Authorization: {{$aadToken}}
 ###### List access policies
 #########################################################
 
-GET {{vaultsPath}}/{{vaultName}}/accessPolicies
+GET {{storesPath}}/{{storeName}}/accessPolicies
     {{version}}
 Authorization: {{$aadToken}}
 
@@ -157,7 +157,7 @@ Authorization: {{$aadToken}}
 ###### Get access policy
 #########################################################
 
-GET {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+GET {{storesPath}}/{{storeName}}/accessPolicies/{{policyName}}
     {{version}}
 Authorization: {{$aadToken}}
 
@@ -165,7 +165,7 @@ Authorization: {{$aadToken}}
 ###### Create or update access policy
 #########################################################
 
-PUT {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+PUT {{storesPath}}/{{storeName}}/accessPolicies/{{policyName}}
     {{version}}
 Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
@@ -185,7 +185,7 @@ Content-Type: application/json; charset=utf-8
 ###### Patch access policy
 #########################################################
 
-PATCH {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+PATCH {{storesPath}}/{{storeName}}/accessPolicies/{{policyName}}
     {{version}}
 Authorization: {{$aadToken}}
 Content-Type: application/json; charset=utf-8
@@ -205,6 +205,6 @@ Content-Type: application/json; charset=utf-8
 ###### Delete access policy
 #########################################################
 
-DELETE {{vaultsPath}}/{{vaultName}}/accessPolicies/{{policyName}}
+DELETE {{storesPath}}/{{storeName}}/accessPolicies/{{policyName}}
     {{version}}
 Authorization: {{$aadToken}}

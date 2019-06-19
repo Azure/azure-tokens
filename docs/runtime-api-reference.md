@@ -86,14 +86,6 @@ A token can be read by requesting a `GET` operation against `https://[token-stor
 
 Try this operation out in VS Code under **Read token** section of the [.http file](/docs/runtime-api-reference.http).
 
-## Get valid access token
-
-A token can be retrieved by requesting a `POST` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/[token-name]` with the an empty body payload. The result should be `200 OK`.
-
-Try this operation out in VS Code under **Get valid access token** section of the [.http file](/docs/runtime-api-reference.http).
-
-Alternately, an access token only without the token metadata can be retrieved by requesting a `POST` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/[token-name]/accesstoken` with the an empty body payload. The result should be `200 OK`.
-
 ## Save token (after post-login redirect)
 
 Fully secure integration of Token Store with your web application requires implementing the post-login redirect pattern. Please refer to the [Phishing attack vulnerability](phishing-attack-vulnerability.md) topic for the reasons why this is required. The said pattern includes a last step of saving the token by requesting a `POST` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/[token-name]/save` with the payload below. The result should be `200 OK`.

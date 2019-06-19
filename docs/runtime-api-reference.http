@@ -35,13 +35,6 @@ POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}
 Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
 
 #########################################################
-###### Get access token
-#########################################################
-
-POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}/accesstoken
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
-
-#########################################################
 ###### Save token using redirect code
 #########################################################
 

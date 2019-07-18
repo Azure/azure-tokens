@@ -7,7 +7,7 @@
 @storeName = [your-store-name]
 @serviceName = testService
 @tokenName = testToken
-@runtimeBaseUrl = https://{{storeName}}.westcentralus.tokenstore.azure.net
+@runtimeBaseUrl = https://{{storeName}}.tokenstore.azure.net
 
 ## NOTE: REPLACE [your-domain.com] WITH YOUR DOMAIN NAME. For example if your personal user Id is me@mycompany.com,
 ## the string [your-domain.com] should be replaced with mycompany.com everywhere in this document
@@ -17,14 +17,14 @@
 #########################################################
 
 GET {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
+Authorization: {{$aadToken [your-domain.com] aud:https://{{storeName}}.tokenstore.azure.net}}
 
 #########################################################
 ###### List tokens
 #########################################################
 
 GET {{runtimeBaseUrl}}/services/{{serviceName}}/tokens
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
+Authorization: {{$aadToken [your-domain.com] aud:https://{{storeName}}.tokenstore.azure.net}}
 
 
 #########################################################
@@ -32,14 +32,14 @@ Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
 #########################################################
 
 POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
+Authorization: {{$aadToken [your-domain.com] aud:https://{{storeName}}.tokenstore.azure.net}}
 
 #########################################################
 ###### Save token using redirect code
 #########################################################
 
 POST {{runtimeBaseUrl}}/services/{{serviceName}}/tokens/{{tokenName}}/save
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
+Authorization: {{$aadToken [your-domain.com] aud:https://{{storeName}}.tokenstore.azure.net}}
 Content-Type: application/json; charset=utf-8
 
 { "code" : "" }
@@ -49,14 +49,14 @@ Content-Type: application/json; charset=utf-8
 #########################################################
 
 GET {{runtimeBaseUrl}}/services
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
+Authorization: {{$aadToken [your-domain.com] aud:https://{{storeName}}.tokenstore.azure.net}}
 
 #########################################################
 ###### Read service
 #########################################################
 
 GET {{runtimeBaseUrl}}/services/{{serviceName}}
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
+Authorization: {{$aadToken [your-domain.com] aud:https://{{storeName}}.tokenstore.azure.net}}
 
 
 #########################################################
@@ -64,7 +64,7 @@ Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
 #########################################################
  
 PUT {{runtimeBaseUrl}}/services/{{serviceName}}
-Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
+Authorization: {{$aadToken [your-domain.com] aud:https://{{storeName}}.tokenstore.azure.net}}
 Content-Type: application/json; charset=utf-8
 
 {

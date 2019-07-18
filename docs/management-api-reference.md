@@ -53,8 +53,8 @@ Stores can be listed by requesting a `GET` operation against `https://management
     "type": "Microsoft.Token/stores",
     "location": "westcentralus",
     "properties": {
-      "redirectUrl": "https://teststore1.westcentralus.tokenstore.azure.net/redirect",
-      "storeUrl": "https://teststore1.westcentralus.tokenstore.azure.net",
+      "redirectUrl": "https://teststore1.tokenstore.azure.net/redirect",
+      "storeUrl": "https://teststore1.tokenstore.azure.net",
       "authorizedPostRedirectUrls": ["http://example.com/tokens/postlogin"]
     },
   },
@@ -93,8 +93,8 @@ A store can be read by requesting a `GET` operation against `https://management.
     "type": "Microsoft.Token/stores",
     "location": "westcentralus",
     "properties": {
-      "redirectUrl": "https://[token-store-name].westcentralus.tokenstore.azure.net:443/redirect",
-      "storeUrl": "https://[token-store-name].westcentralus.tokenstore.azure.net",
+      "redirectUrl": "https://[token-store-name].tokenstore.azure.net:443/redirect",
+      "storeUrl": "https://[token-store-name].tokenstore.azure.net",
       "authorizedPostRedirectUrls": ["http://example.com/tokens/postlogin"]
     },
   }
@@ -204,8 +204,8 @@ Tokens can be listed by requesting a `GET` operation against `https://management
     "location": "westcentralus",
     "properties": {
       "parameterValues": {},
-      "tokenUri": "https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/testtoken1",
-      "loginUri": "https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/testtoken1/login",
+      "tokenUri": "https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/testtoken1",
+      "loginUri": "https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/testtoken1/login",
       "value": null,
       "status": {
         "state": "Error",
@@ -249,8 +249,8 @@ A token can be read by requesting a `GET` operation against `https://management.
   "type": "Microsoft.Token/stores/services/tokens",
   "properties": {
      "parameterValues": {},
-    "tokenUri": "https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/testtoken",
-    "loginUri": "https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/testtoken/login",
+    "tokenUri": "https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/testtoken",
+    "loginUri": "https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/testtoken/login",
     "value": null,
     "status": {
       "state": "Error",

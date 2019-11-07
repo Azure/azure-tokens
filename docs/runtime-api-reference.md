@@ -2,7 +2,7 @@
 
 # What are runtime APIs?
 
-The runtime APIs are available through a dedicated web address for each token store. They provide token operations like get-valid-token, in addition to supporting most of the resource management actions. Runtime APIs are meant for direct programmatic access and are better optimized for performance. The service host is typically available at `https://[token-store-name].westcentralus.tokenstore.azure.net`.
+The runtime APIs are available through a dedicated web address for each token store. They provide token operations like get-valid-token, in addition to supporting most of the resource management actions. Runtime APIs are meant for direct programmatic access and are better optimized for performance. The service host is typically available at `https://[token-store-name].tokenstore.azure.net`.
 
 # Calling the APIs with Rest Client extension
 
@@ -49,7 +49,7 @@ Authorization: {{$aadToken [your-domain.com] aud:https://tokenstore.azure.net}}
 
 ## Create or update token
 
-A token can be created by requesting a `PUT` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/[token-name]` with the payload below. The result should be `201 Created`.
+A token can be created by requesting a `PUT` operation against `https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/[token-name]` with the payload below. The result should be `201 Created`.
 
 ```json
 {
@@ -63,15 +63,15 @@ Try this operation out in VS Code under **Create or update token** section of th
 
 ## Read token
 
-A token can be read by requesting a `GET` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/[token-name]`. The resulting payload will be similar to below:
+A token can be read by requesting a `GET` operation against `https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/[token-name]`. The resulting payload will be similar to below:
 
 ```json
 {
     "name": "testtoken",
     "displayName": "testToken" , 
     "parameterValues": {},
-    "tokenUri": "https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/testtoken",
-    "loginUri": "https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/testtoken/login",
+    "tokenUri": "https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/testtoken",
+    "loginUri": "https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/testtoken/login",
     "value": null,
     "status": {
         "state": "Error",
@@ -88,7 +88,7 @@ Try this operation out in VS Code under **Read token** section of the [.http fil
 
 ## Save token (after post-login redirect)
 
-Fully secure integration of Token Store with your web application requires implementing the post-login redirect pattern. Please refer to the [Phishing attack vulnerability](phishing-attack-vulnerability.md) topic for the reasons why this is required. The said pattern includes a last step of saving the token by requesting a `POST` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/[token-name]/save` with the payload below. The result should be `200 OK`.
+Fully secure integration of Token Store with your web application requires implementing the post-login redirect pattern. Please refer to the [Phishing attack vulnerability](phishing-attack-vulnerability.md) topic for the reasons why this is required. The said pattern includes a last step of saving the token by requesting a `POST` operation against `https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/[token-name]/save` with the payload below. The result should be `200 OK`.
 
 ```json
 {
@@ -112,13 +112,13 @@ Try this operation out in VS Code under **Save token** section of the [.http fil
 
 ## Delete token
 
-A token can be read by requesting a `DELETE` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/[token-name]`with no payload. The result should be `200 OK`.
+A token can be read by requesting a `DELETE` operation against `https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/[token-name]`with no payload. The result should be `200 OK`.
 
 Try this operation out in VS Code under **Delete token** section of the [.http file](/docs/runtime-api-reference.http).
 
 ## List tokens
 
-Tokens can be listed by requesting a `GET` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens`. The result should be `200 OK` with a payload similar to below. 
+Tokens can be listed by requesting a `GET` operation against `https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens`. The result should be `200 OK` with a payload similar to below. 
 
 ```json
 {
@@ -126,8 +126,8 @@ Tokens can be listed by requesting a `GET` operation against `https://[token-sto
     "name": "testtoken1",
     "displayName": "Test token 1",
     "parameterValues": {},
-    "tokenUri": "https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/testtoken1",
-    "loginUri": "https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]/tokens/testtoken1/login",
+    "tokenUri": "https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/testtoken1",
+    "loginUri": "https://[token-store-name].tokenstore.azure.net/services/[service-name]/tokens/testtoken1/login",
     "value": null,
     "status": {
     "state": "Error",
@@ -149,7 +149,7 @@ Try this operation out in VS Code under **List tokens** section of the [.http fi
 
 ## Create or update service
 
-A service can be created by requesting a `PUT` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]` with the payload below. The result should be `201 Created`.
+A service can be created by requesting a `PUT` operation against `https://[token-store-name].tokenstore.azure.net/services/[service-name]` with the payload below. The result should be `201 Created`.
 
 ```json
 {
@@ -170,7 +170,7 @@ Try this operation out in VS Code under **Create or update service** section of 
 
 ## Read service
 
-A service can be read by requesting a `GET` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]`. The resulting payload will be similar to below. 
+A service can be read by requesting a `GET` operation against `https://[token-store-name].tokenstore.azure.net/services/[service-name]`. The resulting payload will be similar to below. 
 
 ```json
 {
@@ -188,13 +188,13 @@ Try this operation out in VS Code under **Read service** section of the [.http f
 
 ## Delete service
 
-A service can be read by requesting a `DELETE` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services/[service-name]`with no payload. The result should be `200 OK`.
+A service can be read by requesting a `DELETE` operation against `https://[token-store-name].tokenstore.azure.net/services/[service-name]`with no payload. The result should be `200 OK`.
 
 Try this operation out in VS Code under **Delete service** section of the [.http file](/docs/runtime-api-reference.http).
 
 ## List services
 
-Services can be listed by requesting a `GET` operation against `https://[token-store-name].westcentralus.tokenstore.azure.net/services`. The result should be `200 OK` with a payload similar to below.
+Services can be listed by requesting a `GET` operation against `https://[token-store-name].tokenstore.azure.net/services`. The result should be `200 OK` with a payload similar to below.
 
 ```json
 {

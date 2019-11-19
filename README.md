@@ -7,8 +7,7 @@ Azure Token Store is a general purpose OAuth Token Management service for develo
 
 # Let's get started!
 
-1. Send us **your Azure Subscription Id**, so we can onboard you in the Token Store private preview.
-1. Once enrolled, **deploy your first Token Store** for App Service by following [instructions on GitHub](https://github.com/joerob-msft/app-service-msi-tokenvault-dotnet).
+1. **deploy your first Token Store** for App Service by following [instructions on GitHub](https://github.com/joerob-msft/app-service-msi-tokenvault-dotnet).
     1. Deploy and use the Site on Azure.
     1. Clone, develop and debug locally, then deploy to Azure.
 1. **Send us feedback!** Either through our discussion alias (tokens@microsoft.com) or through [issues on GitHub](https://github.com/Azure/azure-tokens/issues).

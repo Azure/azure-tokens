@@ -12,7 +12,7 @@ Register an app with the service (eg Dropbox) you want to call on behalf of your
 
 1. Go to the service's **Developer site**. For example visit the [Dropbox developer site](https://www.dropbox.com/developers/apps).
 1. create an account with the service using your contact information.
-1. Create an app registration, and set the redirect URI to `https://[your-store-name].westcentralus.tokenstore.azure.net/redirect`.
+1. Create an app registration, and set the redirect URI to `https://[your-store-name].tokenstore.azure.net/redirect`.
 1. Record the **App key** and **App secret** to be used in upcoming steps.
 
 ## Create the service resource
@@ -67,7 +67,7 @@ The following instructions describe the service creation steps that may be diffe
 1. **Sign in** using the link on top-right of the web site. **[Sign up](https://www.dropbox.com/register)** if you do not have an account already.
 1. [Create a new app](https://www.dropbox.com/developers/apps/create), choose **Dropbox API**, **Full Dropbox** access, and create a unique name for your app.
 1. Record the **App key** and **App secret** values for future use.
-1. Add to **Redirect URIs** the value `https://[token-store-name].westcentralus.tokenstore.azure.net/redirect` where `[token-store-name]` is the name of your token store, that you will create in the next step.
+1. Add to **Redirect URIs** the value `https://[token-store-name].tokenstore.azure.net/redirect` where `[token-store-name]` is the name of your token store, that you will create in the next step.
 1. Follow instrictions to **Create the service** above.
 
 Try this operation out in VS Code under **Create Dropbox service** section of the [.http file](/docs/service-definition-reference.http). See the [Runtime API reference](/docs/runtime-api-reference.cs) topic for instructions on how to use the `.http` file with VS Code's Rest Client extension.
@@ -77,7 +77,7 @@ Try this operation out in VS Code under **Create Dropbox service** section of th
 The following instructions describe the service creation steps that may be different from the general recipe presented above.
 
 1. Go to [Azure Portal application registration](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps).
-1. Create a new application, Use a unique name for your app, select **Application type** *Web app / API*, and set sign-on URL to `https://[token-store-name].westcentralus.tokenstore.azure.net/redirect` where `[token-store-name]` is the name of your token store, that you will create in the next step.
+1. Create a new application, Use a unique name for your app, select **Application type** *Web app / API*, and set sign-on URL to `https://[token-store-name].tokenstore.azure.net/redirect` where `[token-store-name]` is the name of your token store, that you will create in the next step.
 1. After creation record the **Application ID** values for future use.
 1. Select **Settings**, then **Keys**, enter a *Key description*, select **Expires** value *Never*, then *Save*.
 1. Record the Key Password Value (or **Application secret**) for future use. Note: This is the only time you will be able to retrieve the secret from the Azure portal UI.
@@ -156,7 +156,7 @@ The following instructions describe the service creation steps that may be diffe
 1. **Sign in** using the link on top-right of the web site.
 1. Create a new application, by choosing a unique name for your app.
 1. Record the **App ID** and **App secret** values for future use.
-1. Add the **Facebook Login** product on the first page, and under **Settings**, set **Valid OAuth Redirect URIs** to `https://[token-store-name].westcentralus.tokenstore.azure.net/redirect` where `[token-store-name]` is the name of your token store, that you will create in the next step.
+1. Add the **Facebook Login** product on the first page, and under **Settings**, set **Valid OAuth Redirect URIs** to `https://[token-store-name].tokenstore.azure.net/redirect` where `[token-store-name]` is the name of your token store, that you will create in the next step.
 1. Set rest of the required fields like *Privacy policy URL*, then *Save changes*.
 1. Follow instrictions to **Create the service** above.
 
@@ -171,7 +171,7 @@ The following instructions describe the service creation steps that may be diffe
 1. **Sign in** using the link on top-right of the web site.
 1. Create a new client, by choosing a unique name for your app.
 1. Record the **Client ID** and **Client Secret** values for future use.
-1. Under **Security** tab, set **Valid redirect URIs** to `https://[token-store-name].westcentralus.tokenstore.azure.net/redirect` where `[token-store-name]` is the name of your token store, that you will create in the next step.
+1. Under **Security** tab, set **Valid redirect URIs** to `https://[token-store-name].tokenstore.azure.net/redirect` where `[token-store-name]` is the name of your token store, that you will create in the next step.
 1. Set rest of the required fields like *Company name*, then *Save changes*.
 1. Follow instrictions to **Create the service** above, but make sure the parameter `scopes` is set to `basic`.
 

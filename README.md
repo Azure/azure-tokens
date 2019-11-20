@@ -43,7 +43,7 @@ The service consists of two distinct REST-based Application Programming Interfac
 
 ## Runtime APIs
 
-The runtime APIs are available through a dedicated web address for each token store. They support most of the resource management actions, however they also support the all-important token operations like get-access-token. They are meant for direct programmatic use and are more optimized for performance. The service host is `https://[token-store-name].westcentralus.tokenstore.azure.net`.
+The runtime APIs are available through a dedicated web address for each token store. They support most of the resource management actions, however they also support the all-important token operations like get-access-token. They are meant for direct programmatic use and are more optimized for performance. The service host is `https://[token-store-name].tokenstore.azure.net`.
 
 See **[Runtime API reference](/docs/runtime-api-reference.md)** for more details.
 

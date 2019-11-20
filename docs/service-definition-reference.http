@@ -7,7 +7,7 @@
 @storeName = [your-store-name]
 @serviceName = testService
 @tokenName = testToken
-@runtimeBaseUrl = https://{{storeName}}.westcentralus.tokenstore.azure.net
+@runtimeBaseUrl = https://{{storeName}}.tokenstore.azure.net
 
 ## NOTE: REPLACE [your-domain.com] WITH YOUR DOMAIN NAME. For example if your personal user Id is me@mycompany.com,
 ## the string [your-domain.com] should be replaced with mycompany.com everywhere in this document

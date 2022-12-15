@@ -35,7 +35,7 @@ The service consists of two distinct REST-based Application Programming Interfac
 
 **Token** resource abstracts the data and functionality around OAuth 2.0 tokens. The user can perform login action on a specific token resource, which then abstracts the refresh and access tokens. The web application can then call the GetAccessToken action, and use the access token at runtime to call the external service on behalf of the user.
 
-**Service** resource represents a specific external service and its acoompanying authentication settings. We provide a list of managed service definitions that can be used to create a service resouce with minimal complexity. Usually client ID and client secret are the only parameters that need to be assigned upon service resource creation.
+**Service** resource represents a specific external service and its acoompanying authentication settings. We provide a list of managed service definitions that can be used to create a service resource with minimal complexity. Usually client ID and client secret are the only parameters that need to be assigned upon service resource creation.
 
 **Store** resource is a container of tokens and services, and represents the scope at which billing takes effect, as well as the scope at which Azure resource operations can be performed in ARM.
 
